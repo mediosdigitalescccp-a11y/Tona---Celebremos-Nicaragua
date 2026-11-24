@@ -8,7 +8,7 @@
 <meta name="robots" content="noindex,nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600&display=swap">
 <style>
 :root {
   --fg: #12301c; --muted: #5d6f62; --line: #dfe8df; --panel: #fff; --panel-2: #f4f8f2;
@@ -24,7 +24,7 @@ body { margin: 0; font-family: "Montserrat", system-ui, sans-serif; font-size: 1
 .wrap { max-width: 1440px; margin: 0 auto; padding: 0 16px 32px; }
 h1, h2, h3, h4 { margin: 0; }
 .num { font-variant-numeric: tabular-nums; }
-button, select { font-family: inherit; }
+button, select, input, textarea, table, svg, svg text { font-family: "Montserrat", system-ui, sans-serif; }
 
 .nav { position: sticky; top: 0; z-index: 20; background: rgba(6, 74, 31, .97); backdrop-filter: blur(8px); border-bottom: 3px solid var(--gold); }
 .nav .wrap { display: flex; gap: 6px; align-items: center; padding-top: 8px; padding-bottom: 8px; overflow-x: auto; scrollbar-width: none; }
@@ -41,7 +41,6 @@ button, select { font-family: inherit; }
 .hero-logos { display: flex; align-items: center; gap: 14px; }
 .um-plate { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 12px; padding: 9px 14px; display: grid; place-items: center; }
 .um { height: 24px; width: auto; display: block; }
-.wm { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; font-size: 34px; color: #fff; text-shadow: 0 2px 0 var(--red); letter-spacing: -.01em; line-height: 1; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); }
 .tag.gold { background: var(--gold); color: #1f1500; border-color: var(--gold); }
@@ -256,7 +255,7 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
 .side-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
 
 .cover { position: relative; }
-.cover-um { position: absolute; right: 2.2%; bottom: 4.5%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3); border-radius: 12px; padding: .7% 1.3%; line-height: 0; backdrop-filter: blur(4px); }
+.cover-um { position: absolute; right: 3%; bottom: 5.5%; line-height: 0; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
 .cover-um img { height: clamp(14px, 2.1vw, 30px); width: auto; display: block; }
 .camp-h { margin-top: 44px; scroll-margin-top: 16px; border-radius: 22px; overflow: hidden; position: relative; color: #fff; background: radial-gradient(520px 260px at 100% 0%, color-mix(in srgb, var(--c) 40%, transparent), transparent 70%), linear-gradient(120deg, #0b6a2c, #053d19 75%); box-shadow: 0 14px 30px rgba(6,74,31,.25); padding: 20px 24px 16px; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 6px 18px; align-items: center; }
 .camp-h::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 7px; background: var(--c); }
@@ -286,6 +285,14 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
 .pv-x small { grid-column: 1 / -1; font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .pv-x span { color: var(--muted); }
 .pv-x b { text-align: right; }
+.gra { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.gc { background: var(--panel-2); border-radius: 12px; padding: 12px 12px 8px; min-width: 0; position: relative; }
+.gc h4 { font-size: 13px; font-weight: 800; color: var(--fg); }
+.gc .keys { margin: 6px 0 2px; font-size: 11.5px; gap: 10px; }
+.gc .keys .ln::before { height: 3px; border-radius: 2px; vertical-align: 3px; }
+.gc .gsum { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 11.5px; color: var(--muted); }
+.gc .gsum b { color: var(--fg); }
+.gc .chart text { font-size: 10px; }
 .tbl-wrap.scroll { max-height: 520px; overflow: auto; }
 .tbl.noet th:nth-child(3), .tbl.noet td:nth-child(3) { text-align: right; }
 .tbl-wrap.scroll th { position: sticky; top: 0; background: #fff; z-index: 1; }
@@ -300,6 +307,7 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
   .stage .st { grid-column: 1 / -1; justify-self: start; }
   .stage .n { width: 36px; height: 36px; }
   .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .gra { grid-template-columns: 1fr; }
   .blk .ch-tiles { grid-template-columns: repeat(min(var(--n), 2), minmax(0, 1fr)); }
   .camp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .exec { padding-left: 4%; background-size: 130% auto; background-position: 40% bottom; padding-bottom: 24%; }
@@ -425,7 +433,7 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
   </aside>
 </div>
 
-<script src="datos.js?v=4"></script>
+<script src="datos.js?v=5"></script>
 <script>
 (() => {
   const D = window.TN_DATA, R = D.diario;
@@ -508,12 +516,12 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
 
   const header = (e) => { const el = document.getElementById(e.id), t = T(null, e.id);
     if (e.id === 'global') { el.innerHTML = `<span class="camp-n">★</span><div><small>Histórico de toda la campaña</small><h2>Global</h2><p>${F.fecha(t.desde)} – ${F.fecha(t.hasta)}${enCurso ? ' (en curso)' : ''} · Expectativa, Lanzamiento y Colecciona juntas · Meta, YouTube y Display</p></div><span class="camp-st live">Histórico</span>
-      <nav class="camp-nav" aria-label="Secciones de Global"><a href="#kpis">KPIs</a><a href="#hallazgos">Resumen ejecutivo</a><a href="#global-met">Métricas y alcance</a><a href="#global-cre">Creativos</a><a href="#global-ent">Entrega diaria</a><a href="#global-aud">Audiencia</a><a href="#global-det">Detalle diario</a></nav>`; return; }
+      <nav class="camp-nav" aria-label="Secciones de Global"><a href="#kpis">KPIs</a><a href="#hallazgos">Resumen ejecutivo</a><a href="#global-met">Métricas y alcance</a><a href="#global-cre">Creativos</a><a href="#global-ent">Entrega diaria</a><a href="#global-gra">Gráficos</a><a href="#global-aud">Audiencia</a><a href="#global-det">Detalle diario</a></nav>`; return; }
     const live = t.hasta === ult && enCurso, f = D.plan[e.fase], x = ETX[e.id];
     el.style.setProperty('--c', e.c);
     el.innerHTML = `<span class="camp-n">${e.n}</span><div><small>${x.k} · Fase ${f.n} del plan · ${esc(f.nombre)}</small><h2>${e.nombre}</h2><p>${F.fecha(t.desde)} – ${F.fecha(t.hasta)}${live ? ' (en curso)' : ''} · ${x.canales}</p></div><span class="camp-st${live ? ' live' : ''}">${live ? 'Activa' : 'Finalizada'}</span>
       <div class="camp-stats"><div><small>INVERSIÓN</small><b class="num">${F.usd(t.costo)}</b></div><div><small>IMPRESIONES</small><b class="num">${F.int(t.imp)}</b></div><div><small>ALCANCE META</small><b class="num">${F.int(RES.meta[e.id][0])}</b></div><div><small>DÍAS CON PAUTA</small><b class="num">${t.dias}</b></div></div>
-      <nav class="camp-nav" aria-label="Secciones de ${e.nombre}"><a href="#${e.id}-met">Métricas y alcance</a><a href="#${e.id}-kpi">KPI vs. plan</a><a href="#${e.id}-cre">Creativos</a><a href="#${e.id}-ent">Entrega diaria</a><a href="#${e.id}-aud">Audiencia</a><a href="#${e.id}-det">Detalle diario</a></nav>`; };
+      <nav class="camp-nav" aria-label="Secciones de ${e.nombre}"><a href="#${e.id}-met">Métricas y alcance</a><a href="#${e.id}-kpi">KPI vs. plan</a><a href="#${e.id}-cre">Creativos</a><a href="#${e.id}-ent">Entrega diaria</a><a href="#${e.id}-gra">Gráficos</a><a href="#${e.id}-aud">Audiencia</a><a href="#${e.id}-det">Detalle diario</a></nav>`; };
 
   const xtra = (rows) => `<div class="pv-x"><small>Sin meta en el plan</small>${rows.map(([k, v]) => `<span>${k}</span><b class="num">${v}</b>`).join('')}</div>`;
   const kpiHTML = (e) => { const f = D.plan[e.fase], pm = f.canales.Meta, py = f.canales.YouTube, pd = f.canales.Display, tm = T('Meta', e.id), ty = T('YouTube', e.id), td = T('Display', e.id), tt = T(null, e.id);
@@ -529,11 +537,12 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
       ${g ? '' : kpiHTML(e)}
       <section class="card" id="${p}-cre"><div class="blk-t" style="--c:${e.c}">Creativos · ${e.nombre}</div><div class="ctl" style="margin-top:10px">Canal <span class="seg" data-k="cre"></span></div><p class="sub" data-x="cre-sub"></p><div class="cres" data-x="cres"></div><p class="more" data-x="cre-more"></p></section>
       <section class="card" id="${p}-ent"><div class="blk-t" style="--c:${e.c}">Entrega diaria · ${e.nombre}</div><div class="ctl" style="margin-top:10px">Ver ${segHTML('met', Object.entries(metLbl), 'impresiones')}</div><div class="keys">${chs.map((c) => `<span style="--c:${CC[c]}">${chName(c, p)}</span>`).join('')}</div><div class="chart" data-x="chart"></div><p class="sub" style="margin:8px 0 0">${g ? 'Franjas de fondo: etapa de la campaña. ' : ''}El alcance diario no se suma entre días.</p></section>
+      <section class="card" id="${p}-gra"><div class="blk-t" style="--c:${e.c}">Gráficos por canal · ${e.nombre}</div><div class="ctl" style="margin-top:10px">Canal ${segHTML('gra', chs.map((c) => [c, chName(c, p)]), chs[0])}</div><p class="sub" data-x="gra-sub"></p><div class="gra" data-x="gra"></div></section>
       <section class="card" id="${p}-aud"><div class="blk-t" style="--c:${e.c}">Audiencia · ${e.nombre}</div><div class="ctl" style="margin-top:10px">Canal <span class="seg" data-k="aud"></span></div><p class="sub" data-x="aud-sub"></p><div class="aud" data-x="aud"></div></section>
       <section class="card" id="${p}-det"><div class="blk-t" style="--c:${e.c}">Detalle diario · ${e.nombre}</div><div class="ctl" style="margin-top:10px">Canal ${segHTML('det', chs.map((c) => [c, chName(c, p)]), chs[0])}</div><div class="tbl-wrap scroll"><table class="tbl" data-x="tbl"></table></div></section>`;
-    const st = SEC[p] = { e, root, chs, met: 'impresiones', cre: chs[0], aud: 'Meta', det: chs[0], q: (k) => root.querySelector(`[data-x="${k}"]`) };
+    const st = SEC[p] = { e, root, chs, gra: chs[0], met: 'impresiones', cre: chs[0], aud: 'Meta', det: chs[0], q: (k) => root.querySelector(`[data-x="${k}"]`) };
     root.addEventListener('click', (ev) => { const b = ev.target.closest('.seg button'); if (!b) return; const k = b.parentElement.dataset.k; b.parentElement.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); st[k] = b.dataset.v;
-      ({ met: drawDia, cre: drawCre, aud: drawAud, det: drawTabla })[k](st); });
+      ({ met: drawDia, gra: drawGra, cre: drawCre, aud: drawAud, det: drawTabla })[k](st); });
     drawCre(st); drawAud(st); drawTabla(st); };
 
   const drawDia = (st) => { const p = st.e.id, rs = sel(null, p), fechas = [...new Set(rs.map((r) => r.fecha))].sort(), met = st.met, box = st.q('chart'), W = Math.max(box.clientWidth, 300), H = 280, m = { t: 14, r: 6, b: 26, l: 56 };
@@ -550,6 +559,38 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
     box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${metLbl[met]} por día y canal, ${st.e.nombre}">${g}</svg>`;
     const tp = tipFor(box);
     box.querySelectorAll('rect[data-i]').forEach((rc) => { const f = fechas[+rc.dataset.i]; const on = (ev) => tp.show(ev, [F.fecha(f) + (f === ult && enCurso ? ' (en curso)' : ''), ...st.chs.filter((c) => val(c, f)).map((c) => chName(c, p) + ': ' + (met === 'costo' ? F.usd(val(c, f)) : F.int(val(c, f))))]); rc.addEventListener('pointermove', on); rc.addEventListener('pointerdown', on); rc.addEventListener('pointerleave', () => tp.hide()); }); };
+
+
+  // Gráficos por canal: barras (serie A, eje izq.) + línea (serie B, eje der.)
+  const GLB = { alcance: (c) => c === 'Meta' ? 'Alcance' : 'Usuarios', impresiones: () => 'Impresiones', interacciones: () => 'Interacciones', reproducciones: () => 'Views', views: () => 'Views', costo: () => 'Inversión', clics: () => 'Clics', cpm: () => 'CPM' };
+  const GFM = (k) => k === 'costo' ? (v) => '$' + nf(v >= 100 ? 0 : 2).format(v) : k === 'cpm' ? (v) => '$' + nf(2).format(v) : F.M;
+  const GFT = (k) => k === 'costo' || k === 'cpm' ? (v) => '$' + nf(2).format(v) : F.int;
+  const GSPEC = { Meta: [['Alcance vs. impresiones', 'impresiones', 'alcance'], ['Impresiones vs. interacciones', 'impresiones', 'interacciones'], ['Views por día', 'reproducciones']],
+    YouTube: [['Views vs. impresiones', 'impresiones', 'views'], ['Views vs. costo', 'views', 'costo'], ['Views por día', 'views']],
+    Display: [['Clics vs. costo', 'clics', 'costo'], ['Impresiones vs. CPM', 'impresiones', 'cpm'], ['Usuarios por día', 'alcance']] };
+  const LINE = { Meta: 'var(--red)', YouTube: 'var(--green-d)', Display: 'var(--green-d)' };
+  const combo = (box, fechas, A, B, ka, kb, ca, cb) => { const W = Math.max(box.clientWidth, 240), H = 210, m = { t: 10, r: B ? 46 : 8, b: 22, l: 46 };
+    const ma = Math.max(...A) * 1.1 || 1, mb = B ? Math.max(...B) * 1.1 || 1 : 1, gw = (W - m.l - m.r) / fechas.length, bw = Math.max(1.2, gw * .72);
+    const ya = (v) => H - m.b - v / ma * (H - m.t - m.b), yb = (v) => H - m.b - v / mb * (H - m.t - m.b), fa = GFM(ka), fb = B ? GFM(kb) : null, every = Math.ceil(fechas.length / Math.max(3, Math.floor(W / 64)));
+    let g = '';
+    for (let k = 0; k <= 3; k++) { const v = ma / 1.1 * k / 3, yy = ya(v); g += `<line x1="${m.l}" x2="${W - m.r}" y1="${yy}" y2="${yy}" style="stroke:var(--line)"></line><text x="${m.l - 6}" y="${yy + 3}" text-anchor="end">${fa(v)}</text>`; if (B) g += `<text x="${W - m.r + 6}" y="${yy + 3}" style="fill:${cb}">${fb(mb / 1.1 * k / 3)}</text>`; }
+    fechas.forEach((f, i) => { const x = m.l + i * gw + (gw - bw) / 2, op = f === ult && enCurso ? .5 : .9; if (A[i]) g += `<rect x="${x}" y="${ya(A[i])}" width="${bw}" height="${H - m.b - ya(A[i])}" rx="${Math.min(2, bw / 3)}" style="fill:${ca};opacity:${op}"></rect>`;
+      if (i % every === 0) g += `<text x="${x + bw / 2}" y="${H - 6}" text-anchor="middle">${F.fecha(f)}</text>`; });
+    if (B) { const pts = fechas.map((f, i) => [m.l + i * gw + gw / 2, yb(B[i])]); g += `<polyline points="${pts.map((q) => q.join(',')).join(' ')}" style="fill:none;stroke:${cb};stroke-width:2.2;stroke-linejoin:round"></polyline>`; if (fechas.length <= 40) g += pts.map(([x, y]) => `<circle cx="${x}" cy="${y}" r="2.4" style="fill:#fff;stroke:${cb};stroke-width:1.6"></circle>`).join(''); }
+    fechas.forEach((f, i) => { g += `<rect data-i="${i}" x="${m.l + i * gw}" y="${m.t}" width="${gw}" height="${H - m.t - m.b}" style="fill:transparent"></rect>`; });
+    box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+    const tp = tipFor(box), ta = GFT(ka), tb = B ? GFT(kb) : null;
+    box.querySelectorAll('rect[data-i]').forEach((rc) => { const i = +rc.dataset.i, on = (ev) => tp.show(ev, [F.fecha(fechas[i]) + (fechas[i] === ult && enCurso ? ' (en curso)' : ''), box.dataset.la + ': ' + ta(A[i]), ...(B ? [box.dataset.lb + ': ' + tb(B[i])] : [])]); rc.addEventListener('pointermove', on); rc.addEventListener('pointerdown', on); rc.addEventListener('pointerleave', () => tp.hide()); }); };
+  const drawGra = (st) => { const p = st.e.id, c = st.gra, rs = sel(c, p), fechas = [...new Set(rs.map((r) => r.fecha))].sort();
+    const day = (f, k) => { const d = rs.filter((r) => r.fecha === f); return k === 'cpm' ? (sum(d, 'impresiones') ? sum(d, 'costo') / sum(d, 'impresiones') * 1000 : 0) : sum(d, k); };
+    const tot = (k) => k === 'cpm' ? sum(rs, 'costo') / sum(rs, 'impresiones') * 1000 : sum(rs, k);
+    const box = st.q('gra'), ca = CC[c], cb = LINE[c];
+    box.innerHTML = GSPEC[c].map(([t, ka, kb], i) => { const la = GLB[ka](c), lb = kb ? GLB[kb](c) : '';
+      const sm = [ka, kb].filter((k) => k && k !== 'alcance').map((k) => `<span>${k === 'cpm' ? 'CPM promedio' : GLB[k](c)}: <b class="num">${GFT(k)(tot(k))}</b></span>`).join('');
+      return `<div class="gc"><h4>${t}</h4><div class="keys"><span style="--c:${ca}">${la}${kb ? ' (barras)' : ''}</span>${kb ? `<span class="ln" style="--c:${cb}">${lb} (línea)</span>` : ''}</div><div class="gsum">${sm}</div><div class="chart" data-g="${i}" data-la="${la}" data-lb="${lb}"></div></div>`; }).join('');
+    GSPEC[c].forEach(([, ka, kb], i) => combo(box.querySelector(`[data-g="${i}"]`), fechas, fechas.map((f) => day(f, ka)), kb ? fechas.map((f) => day(f, kb)) : null, ka, kb, ca, cb));
+    const usesReach = GSPEC[c].some(([, a, b]) => a === 'alcance' || b === 'alcance');
+    st.q('gra-sub').textContent = `${chName(c, p)} · ${F.fecha(fechas[0])} – ${F.fecha(fechas[fechas.length - 1])}. Barras en el eje izquierdo y línea en el eje derecho.` + (usesReach ? ` ${c === 'Meta' ? 'El alcance de cada día no se suma' : 'Los usuarios de cada día no se suman'} entre días${p === 'global' ? '; en Global, el valor de un día suma las campañas activas ese día' : ''}.` : ''); };
 
   const drawCre = (st) => { const etapa = st.e.id, chs = CH.filter((c) => crePool(c, etapa).length); if (!chs.includes(st.cre)) st.cre = chs[0]; const creCh = st.cre;
     st.root.querySelector('[data-k="cre"]').innerHTML = chs.map((c) => `<button type="button" data-v="${c}" aria-pressed="${c === creCh}">${chName(c, etapa)}</button>`).join('');
@@ -603,7 +644,7 @@ details.notes ul { line-height: 1.6; padding-left: 18px; }
     <div class="side-row"><span>Colecciona (activa)</span><b class="num">${F.M(colec.imp)}</b></div>
     <div class="side-row"><span>Datos al</span><b>${F.fecha(ult)}</b></div>`;
   addEventListener('scroll', () => requestAnimationFrame(spy), { passive: true });
-  const layout = () => { Object.values(SEC).forEach(drawDia); spy(); };
+  const layout = () => { Object.values(SEC).forEach((st) => { drawDia(st); drawGra(st); }); spy(); };
   layout();
   let w = innerWidth, t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { if (innerWidth !== w) { w = innerWidth; layout(); } }, 150); });
 })();
