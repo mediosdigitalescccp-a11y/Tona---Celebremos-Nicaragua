@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Toña · Celebremos Nicaragua · CCCP UM</title>
+<meta name="description" content="Resultados de la campaña Celebremos Nicaragua de Toña en Meta, YouTube y Display, Nicaragua 2026.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root {
+  --fg: #12301c; --muted: #5d6f62; --line: #dfe8df; --panel: #fff; --panel-2: #f4f8f2;
+  --green: #0a7a32; --green-d: #064a1f; --green-l: #2fae5b; --red: #d3212c; --gold: #f2b40f; --cream: #fbf8ef;
+  --c-meta: #1877f2; --c-yt: #e62117; --c-gdn: #f2a20f; --c-ig: #d62976;
+  --e1: #2fae5b; --e2: #d3212c; --e3: #f2b40f;
+  --radius: 14px; --gap: 14px; color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; font-family: "Montserrat", system-ui, sans-serif; font-size: 14px; color: var(--fg); background: radial-gradient(1100px 600px at 100% 0%, rgba(47,174,91,.16), transparent 60%), radial-gradient(900px 500px at 0% 100%, rgba(242,180,15,.12), transparent 60%), linear-gradient(180deg, #eef5ec, var(--cream)) fixed; background-color: #eef5ec; }
+.wrap { max-width: 1440px; margin: 0 auto; padding: 0 16px 32px; }
+h1, h2, h3, h4 { margin: 0; }
+.num { font-variant-numeric: tabular-nums; }
+button, select { font-family: inherit; }
+
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(6, 74, 31, .97); backdrop-filter: blur(8px); border-bottom: 3px solid var(--gold); }
+.nav .wrap { display: flex; gap: 6px; align-items: center; padding-top: 8px; padding-bottom: 8px; overflow-x: auto; scrollbar-width: none; }
+.nav .wrap::-webkit-scrollbar { display: none; }
+.nav-brand { color: #fff; font-weight: 800; letter-spacing: .02em; margin-right: 10px; white-space: nowrap; font-size: 13px; }
+.nav-brand b { color: var(--gold); }
+.nav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: 12.5px; font-weight: 600; padding: 7px 11px; border-radius: 999px; white-space: nowrap; }
+.nav a:hover, .nav a:focus-visible { background: rgba(255,255,255,.14); color: #fff; outline: none; }
+.nav a.on { background: var(--gold); color: #1f1500; }
+
+.hero { margin-top: 16px; border-radius: 22px; overflow: hidden; position: relative; color: #fff; background: radial-gradient(700px 380px at 85% 20%, rgba(242,180,15,.28), transparent 60%), linear-gradient(120deg, #0b7a32, #064a1f 70%); box-shadow: 0 16px 36px rgba(6,74,31,.28); display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: linear-gradient(90deg, var(--red), var(--gold), var(--green-l), #2a7fd4, var(--red)); }
+.hero-txt { padding: 28px 32px 34px; display: flex; flex-direction: column; gap: 12px; position: relative; z-index: 1; }
+.hero-logos { display: flex; align-items: center; gap: 14px; }
+.um-plate { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 12px; padding: 9px 14px; display: grid; place-items: center; }
+.um { height: 24px; width: auto; display: block; }
+.wm { font-family: Georgia, "Times New Roman", serif; font-style: italic; font-weight: 700; font-size: 34px; color: #fff; text-shadow: 0 2px 0 var(--red); letter-spacing: -.01em; line-height: 1; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.28); }
+.tag.gold { background: var(--gold); color: #1f1500; border-color: var(--gold); }
+.hero h1 { font-size: clamp(30px, 4vw, 50px); font-weight: 900; line-height: 1.02; letter-spacing: -.01em; }
+.hero h1 span { display: block; font-size: .36em; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+.lead { margin: 0; font-size: 15px; line-height: 1.55; max-width: 66ch; color: rgba(255,255,255,.9); }
+.lead b { color: #fff; }
+.prog { background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 12px 14px; max-width: 560px; }
+.prog-top { display: flex; justify-content: space-between; font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.75); }
+.prog-top b { color: #fff; font-size: 14px; letter-spacing: 0; text-transform: none; }
+.prog-bar { position: relative; height: 10px; border-radius: 999px; background: rgba(255,255,255,.15); margin-top: 10px; display: flex; overflow: hidden; }
+.prog-bar i { display: block; height: 100%; }
+.prog-now { position: absolute; top: -3px; bottom: -3px; width: 3px; border-radius: 3px; background: #fff; box-shadow: 0 0 0 2px rgba(0,0,0,.25); }
+.prog-l { display: flex; justify-content: space-between; font-size: 10.5px; color: rgba(255,255,255,.75); margin-top: 6px; }
+.hero-side { position: relative; z-index: 1; padding: 26px 28px 34px 0; display: grid; gap: 10px; align-content: center; }
+.stage { display: grid; grid-template-columns: 42px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-decoration: none; color: #fff; background: rgba(255,255,255,.09); border: 1px solid rgba(255,255,255,.2); border-left: 5px solid var(--c); border-radius: 14px; padding: 12px 14px; transition: background .15s; }
+.stage:hover { background: rgba(255,255,255,.16); }
+.stage .n { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--c); font-weight: 900; font-size: 18px; color: #fff; }
+.stage b { display: block; font-size: 14px; }
+.stage small { display: block; font-size: 11.5px; color: rgba(255,255,255,.78); margin-top: 2px; }
+.stage .st { font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; background: rgba(255,255,255,.16); white-space: nowrap; }
+.stage .st.live { background: var(--gold); color: #1f1500; }
+
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); margin-top: var(--gap); }
+.tile { background: #fff; border-radius: var(--radius); padding: 14px 16px; border: 1px solid var(--line); border-top: 4px solid var(--c, var(--green)); box-shadow: 0 6px 18px rgba(6,74,31,.07); min-width: 0; }
+.tile small { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.tile b { display: block; font-size: 22px; font-weight: 800; margin-top: 4px; }
+.tile span { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+.sec { display: flex; align-items: center; gap: 12px; margin: 36px 0 14px; color: var(--green-d); scroll-margin-top: 64px; }
+.sec i { flex: none; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: linear-gradient(145deg, var(--green-l), var(--green-d)); box-shadow: 0 6px 14px rgba(6,74,31,.25); }
+.sec i svg { width: 22px; height: 22px; color: #fff; }
+.sec h2 { font-size: 22px; font-weight: 800; flex: none; }
+.sec-line { flex: 1; height: 2px; min-width: 24px; background: linear-gradient(90deg, var(--gold), rgba(6,74,31,.08)); border-radius: 2px; }
+.sec p { margin: 0; font-size: 12.5px; color: var(--muted); text-align: right; flex: none; max-width: 40%; }
+
+.card { background: var(--panel); border-radius: var(--radius); padding: 18px; box-shadow: 0 6px 18px rgba(6,74,31,.07); border: 1px solid var(--line); min-width: 0; position: relative; }
+.card h3 { font-size: 15px; font-weight: 800; }
+.sub { font-size: 12px; color: var(--muted); margin: 4px 0 12px; line-height: 1.45; }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gap); }
+.s4 { grid-column: span 4; } .s5 { grid-column: span 5; } .s6 { grid-column: span 6; } .s7 { grid-column: span 7; } .s8 { grid-column: span 8; } .s12 { grid-column: span 12; }
+
+.ctl { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 10px; font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.seg { display: inline-flex; flex-wrap: wrap; background: var(--panel-2); border: 1px solid var(--line); border-radius: 16px; padding: 3px; gap: 2px; }
+.seg button { font-size: 12px; font-weight: 600; letter-spacing: 0; text-transform: none; border: 0; background: transparent; color: var(--muted); padding: 6px 12px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.seg button[aria-pressed="true"] { background: var(--green); color: #fff; }
+.seg button:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+.keys { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.keys span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--c); margin-right: 6px; vertical-align: -1px; }
+.chart { position: relative; width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart text { font-family: inherit; fill: var(--muted); font-size: 11px; }
+.tip { position: absolute; pointer-events: none; background: #fff; color: var(--fg); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: 12px; box-shadow: 0 8px 24px rgba(6,40,16,.22); opacity: 0; transition: opacity .12s; z-index: 5; white-space: nowrap; }
+.tip b { display: block; margin-bottom: 3px; }
+
+/* Plan vs real */
+.pv { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.pv-card { background: #fff; border-radius: var(--radius); border: 1px solid var(--line); border-top: 5px solid var(--c); box-shadow: 0 6px 18px rgba(6,74,31,.07); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; justify-content: space-between; }
+.pv-foot { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; border-top: 1px dashed var(--line); padding-top: 10px; }
+.pv-foot div { background: var(--panel-2); border-radius: 10px; padding: 8px 10px; }
+.pv-foot small { display: block; font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.pv-foot b { font-size: 14px; font-weight: 800; }
+.thumb.mt { aspect-ratio: 16 / 7; }
+.thumb .net { position: absolute; right: 8px; top: 8px; z-index: 2; font-size: 10.5px; font-weight: 800; color: #fff; padding: 2px 8px; border-radius: 999px; background: var(--n); }
+.thumb .ph.big { font-size: 15px; letter-spacing: .02em; }
+.pv-h { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.pv-h h3 { font-size: 16px; font-weight: 800; color: var(--fg); }
+.pv-h small { font-size: 11.5px; color: var(--muted); white-space: nowrap; }
+.pv-ch { font-size: 10.5px; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: var(--cc); margin-top: 4px; }
+.meter { display: grid; gap: 4px; }
+.meter-top { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; }
+.meter-top span { color: var(--muted); }
+.meter-top b { font-weight: 800; }
+.mbar { position: relative; height: 9px; border-radius: 999px; background: color-mix(in srgb, var(--cc) 14%, #fff); overflow: hidden; }
+.mbar i { display: block; height: 100%; border-radius: inherit; background: var(--cc); }
+.meter-foot { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); }
+.meter-foot .ok { color: var(--green); font-weight: 800; }
+
+/* Etapas */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--gap); }
+.tabs button { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: #fff; border-radius: 14px; padding: 10px 14px; cursor: pointer; font-weight: 700; font-size: 13px; color: var(--fg); box-shadow: 0 4px 12px rgba(6,74,31,.06); }
+.tabs button i { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: var(--c); color: #fff; font-style: normal; font-weight: 900; font-size: 13px; }
+.tabs button small { font-weight: 600; color: var(--muted); font-size: 11px; }
+.tabs button[aria-pressed="true"] { background: var(--green-d); color: #fff; border-color: var(--green-d); }
+.tabs button[aria-pressed="true"] small { color: rgba(255,255,255,.75); }
+.ch-tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap); }
+.ch { background: #fff; border-radius: var(--radius); border: 1px solid var(--line); border-top: 4px solid var(--cc); box-shadow: 0 6px 18px rgba(6,74,31,.07); padding: 14px 16px; }
+.ch h4 { font-size: 13px; font-weight: 800; color: var(--cc); display: flex; justify-content: space-between; align-items: center; }
+.ch h4 small { color: var(--muted); font-weight: 600; font-size: 11px; }
+.kv { display: grid; grid-template-columns: 1fr auto; gap: 6px 10px; font-size: 12.5px; margin-top: 10px; }
+.kv span { color: var(--muted); }
+.kv b { text-align: right; }
+
+.cres { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.cre { background: var(--panel-2); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--line); min-width: 0; text-decoration: none; color: inherit; }
+.thumb { position: relative; aspect-ratio: 16 / 9; background: linear-gradient(145deg, var(--green-l), var(--green-d)); }
+.thumb.sq { aspect-ratio: 1 / 1; }
+.thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.thumb.ban img { object-fit: contain; background: #f2f5f0; }
+.thumb .ph { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; color: #fff; font-weight: 800; font-size: 12px; padding: 10px; line-height: 1.3; }
+.rank { position: absolute; top: 8px; left: 8px; z-index: 2; background: rgba(6,40,16,.72); color: #fff; font-size: 11px; font-weight: 800; border-radius: 999px; padding: 2px 9px; }
+.play { position: absolute; z-index: 2; right: 10px; bottom: 10px; width: 34px; height: 34px; border-radius: 50%; background: rgba(0,0,0,.55); }
+.play::after { content: ""; position: absolute; left: 13px; top: 10px; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+.cre-body { padding: 10px 12px 12px; display: grid; gap: 5px; font-size: 12px; flex: 1; align-content: start; }
+.cre-name { font-weight: 800; font-size: 12.5px; overflow-wrap: anywhere; }
+.cre-body div { display: flex; justify-content: space-between; gap: 8px; }
+.cre-body span { color: var(--muted); font-size: 10.5px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+.cre-body b { white-space: nowrap; }
+.more { margin-top: 10px; font-size: 12px; color: var(--muted); }
+
+.aud { display: grid; grid-template-columns: .8fr 1fr 1.2fr; gap: 12px; }
+.aud > div { background: var(--panel-2); border-radius: 12px; padding: 12px 14px; display: flex; flex-direction: column; }
+.aud h4 { font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.gbar { display: flex; height: 16px; border-radius: 999px; overflow: hidden; }
+.gbar i { display: block; height: 100%; }
+.gl { display: grid; gap: 6px; margin-top: 10px; font-size: 12.5px; }
+.gl div { display: grid; grid-template-columns: 10px 1fr auto; gap: 8px; align-items: center; }
+.gl i { width: 10px; height: 10px; border-radius: 3px; }
+.rows { flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 4px; }
+.hb { display: grid; grid-template-columns: 96px 1fr 40px; gap: 8px; align-items: center; font-size: 12px; }
+.hb div { height: 11px; border-radius: 999px; background: color-mix(in srgb, var(--c) 14%, transparent); }
+.hb div i { display: block; height: 100%; border-radius: inherit; background: var(--c); }
+.hb b { text-align: right; }
+
+.tbl-wrap { overflow-x: auto; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 820px; }
+.tbl th { text-align: right; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; padding: 8px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.tbl td { text-align: right; padding: 7px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.tbl th:nth-child(-n+3), .tbl td:nth-child(-n+3) { text-align: left; }
+.tbl tr.partial td { color: var(--muted); font-style: italic; }
+.tbl tr.tot td { font-weight: 800; border-top: 2px solid var(--line); }
+.mk { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 9px; border-radius: 999px; color: #fff; background: var(--c); }
+.finds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.find { background: var(--panel-2); border-radius: 12px; padding: 14px; border-left: 4px solid var(--c); font-size: 13px; line-height: 1.5; }
+.find small { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; color: var(--c); margin-bottom: 4px; text-transform: uppercase; }
+
+details.notes { margin-top: 18px; color: var(--muted); font-size: 12.5px; }
+details.notes summary { cursor: pointer; font-weight: 700; }
+details.notes ul { line-height: 1.6; padding-left: 18px; }
+.foot { margin-top: 28px; }
+.conf { width: 100%; background: #fff; border-radius: 18px; padding: 16px 24px; display: flex; align-items: center; gap: 14px; box-shadow: 0 10px 26px rgba(6,74,31,.1); border: 1px solid var(--line); border-left: 5px solid #e8622c; }
+.conf svg { flex: none; width: 22px; height: 22px; }
+.conf p { margin: 0; font-size: 14px; color: #55627a; line-height: 1.5; }
+.conf b { color: #0d1b3a; }
+
+.cover { margin: 16px 0 0; border-radius: 22px; overflow: hidden; box-shadow: 0 16px 36px rgba(6,74,31,.28); line-height: 0; }
+.cover img { width: 100%; height: auto; display: block; }
+.tl-plate { background: #fff; border-radius: 12px; padding: 6px 12px; display: grid; place-items: center; box-shadow: 0 4px 12px rgba(0,0,0,.18); }
+.tl { height: 40px; width: auto; display: block; }
+.kc { position: relative; margin-top: var(--gap); border-radius: 22px; overflow: hidden; container-type: inline-size; box-shadow: 0 16px 36px rgba(6,74,31,.22); line-height: 0; }
+.kc > img { width: 100%; height: auto; display: block; }
+.kc-list { position: absolute; left: 38.3%; top: 11.3%; width: 56.65%; height: 70.6%; display: grid; grid-template-rows: repeat(3, minmax(0, 1fr)); row-gap: 1.02cqw; line-height: 1.2; }
+.kc-i { display: grid; grid-template-columns: 11.55cqw minmax(0, 1fr); align-items: center; min-width: 0; }
+.kc-i i { display: grid; place-items: center; height: 100%; }
+.kc-i i svg { width: 4.6cqw; height: 4.6cqw; }
+.kc-i div { padding: 0 2.4cqw; min-width: 0; }
+.kc-i small { display: block; font-size: 1.2cqw; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--green); }
+.kc-i b { display: block; font-size: 3.7cqw; font-weight: 900; color: var(--green-d); letter-spacing: -.01em; margin: .2cqw 0; }
+.kc-i span { display: block; font-size: 1.15cqw; color: var(--muted); }
+.kc-i span b { display: inline; font-size: inherit; font-weight: 800; color: var(--red); letter-spacing: 0; margin: 0; }
+.exec { border-radius: 22px; overflow: hidden; color: #fff; background: #01310f url(img/fondo_resumen.webp) left bottom / 100% auto no-repeat; padding: 34px 3.5% 18% 19%; position: relative; box-shadow: 0 16px 36px rgba(6,74,31,.22); }
+.exec-logo { position: absolute; right: 3%; top: 24px; height: 54px; width: auto; background: #fff; border-radius: 10px; padding: 5px 9px; }
+.exec-k { display: block; font-size: 13px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
+.exec h3 { font-size: 26px; font-weight: 900; color: #fff; margin: 4px 0 18px; max-width: calc(100% - 130px); }
+.exec .find { background: rgba(255,255,255,.96); color: var(--fg); border-left-width: 5px; box-shadow: 0 8px 20px rgba(0,0,0,.22); }
+.back { margin: 36px 0 0; position: relative; border-radius: 22px; overflow: hidden; box-shadow: 0 16px 36px rgba(6,74,31,.18); line-height: 0; }
+.back img { width: 100%; height: auto; display: block; }
+.back figcaption { position: absolute; left: 50%; top: 68%; transform: translateX(-50%); display: flex; align-items: center; gap: 12px; background: var(--green-d); color: #fff; border-radius: 999px; padding: 10px 18px; line-height: 1.2; font-size: 13px; font-weight: 700; white-space: nowrap; box-shadow: 0 8px 20px rgba(6,74,31,.3); }
+.back figcaption img { height: 20px; width: auto; }
+
+@media (max-width: 1180px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-side { padding: 0 32px 34px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .stage { grid-template-columns: 36px minmax(0, 1fr); }
+  .stage .st { grid-column: 1 / -1; justify-self: start; }
+  .stage .n { width: 36px; height: 36px; }
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .exec { padding-left: 4%; background-size: 130% auto; background-position: 40% bottom; padding-bottom: 24%; }
+  .pv { grid-template-columns: 1fr; }
+  .cres { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .s4, .s5, .s6, .s7, .s8 { grid-column: span 12; }
+  .finds { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .wrap { padding: 0 12px 24px; }
+  .hero-txt { padding: 22px 18px 26px; }
+  .hero-side { padding: 0 18px 26px; grid-template-columns: 1fr; }
+  .stage { grid-template-columns: 36px minmax(0, 1fr) auto; }
+  .stage .st { grid-column: auto; }
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ch-tiles { grid-template-columns: 1fr; }
+  .cres { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .aud { grid-template-columns: 1fr; }
+  .sec p { display: none; }
+  .sec h2 { font-size: 17px; flex: 0 1 auto; }
+  .sec i { width: 38px; height: 38px; border-radius: 12px; }
+  .tabs button { flex: 1 1 calc(50% - 8px); }
+  .tiles.t3 { grid-template-columns: 1fr; }
+  .kc { background: #064a1f url(img/portada_kpis_m.webp) center 30% / cover no-repeat; padding: 190px 12px 12px; container-type: normal; line-height: 1.2; }
+  .kc > img { display: none; }
+  .kc-list { position: static; width: auto; height: auto; row-gap: 10px; }
+  .kc-i { grid-template-columns: 58px minmax(0, 1fr); background: #fff; border-radius: 14px; overflow: hidden; min-height: 86px; }
+  .kc-i i { background: var(--green-d); }
+  .kc-i i svg { width: 28px; height: 28px; }
+  .kc-i div { padding: 10px 14px; }
+  .kc-i small { font-size: 10.5px; }
+  .kc-i b { font-size: 26px; margin: 2px 0; }
+  .kc-i span { font-size: 12px; }
+  .exec { padding: 22px 16px 150px; background-size: 260% auto; background-position: 45% bottom; }
+  .exec-logo { height: 40px; top: 18px; right: 14px; }
+  .exec h3 { font-size: 19px; }
+  .exec-k { max-width: calc(100% - 96px); min-height: 40px; }
+  .back { background: var(--green-d); }
+  .back figcaption { position: static; transform: none; justify-content: center; border-radius: 0; box-shadow: none; font-size: 11.5px; padding: 12px; gap: 8px; }
+  .back figcaption img { height: 14px; }
+}
+</style>
+</head>
+<body>
+<nav class="nav" aria-label="Secciones">
+  <div class="wrap">
+    <span class="nav-brand">TOÑA · <b>CELEBREMOS NICARAGUA</b></span>
+    <a href="#resumen" data-t="resumen">Resumen</a>
+    <a href="#plan" data-t="plan">Plan vs. real</a>
+    <a href="#entrega" data-t="entrega">Entrega diaria</a>
+    <a href="#etapas" data-t="etapas">Por etapa</a>
+    <a href="#detalle" data-t="detalle">Detalle diario</a>
+  </div>
+</nav>
+<main class="wrap">
+  <figure class="cover" id="resumen"><img src="img/portada.webp" alt="Toña · Celebremos Nicaragua" width="1917" height="1078"></figure>
+  <header class="hero">
+    <div class="hero-txt">
+      <div class="hero-logos"><span class="um-plate"><img class="um" src="img/logo_cccp_um.png" alt="CCCP | UM"></span><span class="tl-plate"><img class="tl" src="img/logo_tona.png" alt="Toña Nicaragua"></span></div>
+      <div class="tags"><span class="tag gold">17 latas de colección</span><span class="tag">Meta · YouTube · Display</span><span class="tag">Nicaragua · 25 ago – 31 dic 2026</span></div>
+      <h1><span>Campaña de marca · Toña Nicaragua</span>Celebremos Nicaragua</h1>
+      <p class="lead" id="lead">—</p>
+      <div class="prog" id="prog"></div>
+    </div>
+    <div class="hero-side" id="stages"></div>
+  </header>
+
+  <section class="kc" aria-label="Indicadores principales"><img src="img/portada_kpis.webp" alt="" width="1672" height="941"><div class="kc-list" id="kc"></div></section>
+  <section class="tiles t3" id="tiles" aria-label="Alcance y clics"></section>
+
+  <div class="sec" id="plan"><i><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></i><h2>Plan vs. real por etapa</h2><span class="sec-line"></span><p>Metas del plan de medios de cada fase contra lo entregado</p></div>
+  <div class="pv" id="pv"></div>
+
+  <div class="sec" id="entrega"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i><h2>Entrega diaria</h2><span class="sec-line"></span><p>Desde el 25 ago, por canal</p></div>
+  <div class="grid">
+    <section class="card s12">
+      <h3>Entrega diaria por canal</h3>
+      <div class="ctl" style="margin-top:10px">Ver <span class="seg" id="seg-met"><button type="button" data-v="impresiones" aria-pressed="true">Impresiones</button><button type="button" data-v="costo" aria-pressed="false">Inversión</button><button type="button" data-v="alcance" aria-pressed="false">Alcance / usuarios</button></span></div>
+      <div class="keys" id="keys-ch"></div>
+      <div class="chart" id="c-dia"></div>
+      <p class="sub" style="margin:8px 0 0">Franjas de fondo: etapa de la campaña. El alcance diario no se suma entre días.</p>
+    </section>
+    <section class="exec s12"><img class="exec-logo" src="img/logo_tona.png" alt="Toña"><span class="exec-k">Hallazgos clave · Celebremos Nicaragua</span><h3>Resumen ejecutivo del desempeño digital</h3><div class="finds" id="finds"></div></section>
+  </div>
+
+  <div class="sec" id="etapas"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></i><h2>Resultados por etapa</h2><span class="sec-line"></span><p>Global, Expectativa, Lanzamiento y Colecciona</p></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="ch-tiles" id="ch-tiles"></div>
+  <div class="grid" style="margin-top:var(--gap)">
+    <section class="card s12" id="cre-card"><h3>Creativos</h3><div class="ctl" style="margin-top:10px">Canal <span class="seg" id="seg-cre"></span></div><p class="sub" id="cre-sub"></p><div class="cres" id="cres"></div><p class="more" id="cre-more"></p></section>
+    <section class="card s12"><h3>Audiencia</h3><div class="ctl" style="margin-top:10px">Canal <span class="seg" id="seg-aud"></span></div><p class="sub" id="aud-sub"></p><div class="aud" id="aud"></div></section>
+  </div>
+
+  <div class="sec" id="detalle"><i><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9.5h18M3 15h18M9 4v16" fill="none" stroke="currentColor" stroke-width="2"/></svg></i><h2>Detalle diario</h2><span class="sec-line"></span></div>
+  <section class="card">
+    <div class="ctl">Canal <span class="seg" id="seg-det"></span></div>
+    <div class="tbl-wrap"><table class="tbl" id="tbl"></table></div>
+  </section>
+
+  <figure class="back"><img src="img/contraportada.webp" alt="¡Celebremos lo Nuestro!" width="1917" height="1078" loading="lazy"><figcaption><img src="img/logo_cccp_um.png" alt="CCCP | UM"><span id="back-cap">Datos al —</span></figcaption></figure>
+
+  <details class="notes">
+    <summary>Notas sobre las cifras</summary>
+    <ul>
+      <li>Fuente: hoja "Data Toña 2026", pestañas Data_Celebremos_FB_Ads y Data_Celebremos_GA_Ads. La pauta Always On (AON) no se incluye.</li>
+      <li>Etapas: Expectativa (Meta y YouTube, 25 ago – 7 sep); Lanzamiento (incluye Lanzamiento Sept, su conjunto 2 y Alma Pinolera); Colecciona (Meta alcance y tráfico, YouTube video y Display). Global = toda la campaña.</li>
+      <li>Alcance y usuarios únicos de cada etapa = valores de resumen de la hoja (Reach / Usuarios del bloque); no se suman entre etapas ni canales.</li>
+      <li>Inversión = costo de plataforma. En YouTube se calcula como costo por view × views de cada día. El presupuesto del plan ($36,849.30) incluye comisión de agencia, por eso no se compara directamente con la inversión de plataforma.</li>
+      <li>Las metas del plan por fase (alcance, impresiones, views, clics) se comparan con la etapa equivalente: Expectativa → Fase 1, Lanzamiento → Fase 2, Colecciona → Fase 3.</li>
+      <li>Montos en USD.</li>
+    </ul>
+  </details>
+  <footer class="foot"><div class="conf"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10.5" width="15" height="10" rx="2.2" fill="none" stroke="#e8622c" stroke-width="2"/><path d="M8 10.5V7.8a4 4 0 0 1 8 0v2.7" fill="none" stroke="#e8622c" stroke-width="2"/><circle cx="12" cy="15.5" r="1.4" fill="#e8622c"/></svg><p><b>Información confidencial.</b> Propiedad de CCCP UM Nicaragua. Uso interno; no distribuir sin autorización.</p></div></footer>
+</main>
+
+<script src="datos.js?v=2"></script>
+<script>
+(() => {
+  const D = window.TN_DATA, R = D.diario;
+  const CH = ['Meta', 'YouTube', 'Display'], CC = { Meta: 'var(--c-meta)', YouTube: 'var(--c-yt)', Display: 'var(--c-gdn)' };
+  const ET = [
+    { id: 'global', nombre: 'Global', sub: 'Toda la campaña', c: 'var(--green-d)', n: '★' },
+    { id: 'expectativa', nombre: 'Expectativa', sub: '25 ago – 7 sep', c: 'var(--e1)', n: '1', fase: 0 },
+    { id: 'lanzamiento', nombre: 'Lanzamiento', sub: '4 sep – 2 nov · incluye Alma Pinolera', c: 'var(--e2)', n: '2', fase: 1 },
+    { id: 'colecciona', nombre: 'Colecciona', sub: 'Desde el 6 oct · activa', c: 'var(--e3)', n: '3', fase: 2 }
+  ];
+  const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+  const nf = (d) => new Intl.NumberFormat('en-US', { maximumFractionDigits: d, minimumFractionDigits: d });
+  const F = { int: (v) => nf(0).format(v), d2: (v) => nf(2).format(v), usd: (v) => '$' + nf(2).format(v), usd0: (v) => '$' + nf(0).format(v), pct: (v) => nf(0).format(v * 100) + '%', pct1: (v) => nf(1).format(v * 100) + '%', pct2: (v) => nf(2).format(v * 100) + '%',
+    M: (v) => v >= 1e6 ? nf(2).format(v / 1e6) + ' M' : v >= 1e3 ? nf(1).format(v / 1e3) + ' mil' : nf(0).format(v), fecha: (s) => { const [, m, d] = s.split('-').map(Number); return d + ' ' + MES[m - 1]; } };
+  const sum = (a, k) => a.reduce((s, r) => s + (+r[k] || 0), 0);
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const hoy = new Date(Date.now() - 6 * 3600e3).toISOString().slice(0, 10), ult = D.actualizado, enCurso = ult >= hoy;
+  const tipFor = (box) => { let t = box.querySelector(':scope > .tip'); if (!t) { t = document.createElement('div'); t.className = 'tip'; box.append(t); } return {
+    show(ev, lines) { t.innerHTML = '<b>' + esc(lines[0]) + '</b>' + lines.slice(1).map((l) => '<div>' + esc(l) + '</div>').join(''); const r = box.getBoundingClientRect(); let x = ev.clientX - r.left + 12; t.style.opacity = 1; const w = t.offsetWidth; if (x + w > r.width) x = Math.max(0, ev.clientX - r.left - w - 12); t.style.left = x + 'px'; t.style.top = (ev.clientY - r.top + 12) + 'px'; },
+    hide() { t.style.opacity = 0; } }; };
+  const segs = (id, fn) => { const s = document.getElementById(id); s.addEventListener('click', (ev) => { const b = ev.target.closest('button'); if (!b) return; s.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', String(x === b))); fn(b.dataset.v); }); };
+  const sel = (canal, etapa) => R.filter((r) => (!canal || r.canal === canal) && (!etapa || etapa === 'global' || r.etapa === etapa));
+  const RES = D.resumen;
+
+  // Totales
+  const T = (canal, etapa) => { const rs = sel(canal, etapa); return { imp: sum(rs, 'impresiones'), costo: sum(rs, 'costo'), clics: sum(rs, 'clics'), inter: sum(rs, 'interacciones'), views: sum(rs, 'views'), repro: sum(rs, 'reproducciones'), dias: new Set(rs.map((r) => r.fecha)).size, desde: rs.length ? rs.map((r) => r.fecha).sort()[0] : null, hasta: rs.length ? rs.map((r) => r.fecha).sort().slice(-1)[0] : null }; };
+  const G = { meta: T('Meta'), yt: T('YouTube'), gdn: T('Display') };
+  const inv = G.meta.costo + G.yt.costo + G.gdn.costo, imp = G.meta.imp + G.yt.imp + G.gdn.imp;
+  const INI = '2026-08-25', FIN = '2026-12-31', days = (a, b) => Math.round((Date.parse(b) - Date.parse(a)) / 864e5);
+  const dia = Math.min(days(INI, ult) + 1, days(INI, FIN) + 1), total = days(INI, FIN) + 1;
+
+  document.getElementById('lead').innerHTML = `Del ${F.fecha(INI)} al ${F.fecha(ult)}${enCurso ? ' (en curso)' : ''}, Celebremos Nicaragua suma <b>${F.int(imp)}</b> impresiones y <b>${F.int(G.yt.views)}</b> views en YouTube, con <b>${F.int(RES.meta.global[0])}</b> personas alcanzadas en Meta y <b>${F.int(RES.youtube.global[0])}</b> usuarios únicos en YouTube.`;
+  const FASES = [['2026-08-25', '2026-09-07', 'var(--e1)'], ['2026-09-08', '2026-11-02', 'var(--e2)'], ['2026-11-03', FIN, 'var(--e3)']];
+  document.getElementById('prog').innerHTML = `<div class="prog-top"><span>Avance de la campaña<br><b>Día ${dia} de ${total}</b></span><span style="text-align:right">Datos al<br><b>${F.fecha(ult)}${enCurso ? ' (en curso)' : ''}</b></span></div>
+    <div class="prog-bar">${FASES.map(([a, b, c]) => `<i style="width:${(days(a, b) + 1) / total * 100}%;background:${c};opacity:.85"></i>`).join('')}<span class="prog-now" style="left:calc(${dia / total * 100}% - 1px)"></span></div>
+    <div class="prog-l"><span>25 ago</span><span>Expectativa · Lanzamiento · Colecciona</span><span>31 dic</span></div>`;
+  document.getElementById('stages').innerHTML = ET.slice(1).map((e) => { const t = T(null, e.id), live = t.hasta >= hoy || t.hasta === ult;
+    return `<a class="stage" href="#etapas" data-e="${e.id}" style="--c:${e.c}"><span class="n">${e.n}</span><span><b>${e.nombre}</b><small>${F.fecha(t.desde)} – ${F.fecha(t.hasta)} · ${F.M(t.imp)} impresiones</small></span><span class="st${live ? ' live' : ''}">${live ? 'Activa' : 'Finalizada'}</span></a>`; }).join('');
+
+  const ICO = {"usd": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v18M16.5 7.5c-.8-1.3-2.4-2-4.5-2-2.6 0-4.3 1.3-4.3 3.2 0 4.4 9 2.4 9 6.8 0 2-1.9 3.3-4.6 3.3-2.3 0-4-.9-4.8-2.4\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg>", "eye": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.2\"/><circle cx=\"12\" cy=\"12\" r=\"3.2\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.2\"/></svg>", "play": "<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"2.5\" y=\"5\" width=\"19\" height=\"14\" rx=\"4\" fill=\"none\" stroke=\"#fff\" stroke-width=\"2.2\"/><path d=\"M10 9.2v5.6l4.8-2.8z\" fill=\"#fff\"/></svg>"};
+  const kc = [['usd', 'Inversión en plataforma', F.usd(inv), 'Costo en plataforma de Meta, YouTube y Display'],
+    ['eye', 'Impresiones totales', F.int(imp), 'CPM promedio <b>' + F.usd(inv / imp * 1000) + '</b>'],
+    ['play', 'Views en YouTube', F.int(G.yt.views), 'VTR <b>' + F.pct1(G.yt.views / G.yt.imp) + '</b> · CPV ' + '$' + nf(4).format(G.yt.costo / G.yt.views)]];
+  document.getElementById('kc').innerHTML = kc.map(([ic, a, b, c]) => `<div class="kc-i"><i>${ICO[ic]}</i><div><small>${a}</small><b class="num">${b}</b><span>${c}</span></div></div>`).join('');
+  const tiles = [['Alcance Meta', F.int(RES.meta.global[0]), 'personas únicas · frecuencia ' + F.d2(RES.meta.global[1]), 'var(--c-meta)'], ['Usuarios únicos YouTube', F.int(RES.youtube.global[0]), 'frecuencia ' + F.d2(RES.youtube.global[1]), 'var(--c-yt)'],
+    ['Clics totales', F.int(G.meta.clics + G.yt.clics + G.gdn.clics), F.int(D.extras.lpv) + ' visitas al sitio (tráfico)', 'var(--red)']];
+  document.getElementById('tiles').innerHTML = tiles.map(([a, b, c, col]) => `<div class="tile" style="--c:${col}"><small>${a}</small><b class="num">${b}</b><span>${c}</span></div>`).join('');
+  document.getElementById('back-cap').textContent = 'Datos al ' + F.fecha(D.actualizado) + ' · CCCP UM Nicaragua';
+
+  // Plan vs real
+  const meter = (lab, v, meta, fmt, cc) => { const p = v / meta; return `<div class="meter" style="--cc:${cc}"><div class="meter-top"><span>${lab}</span><b class="num">${fmt(v)}</b></div><div class="mbar"><i style="width:${Math.min(1, p) * 100}%"></i></div><div class="meter-foot"><span>Meta ${fmt(meta)}</span><span class="${p >= 1 ? 'ok' : ''}">${F.pct(p)}${p >= 1 ? ' ✓' : ''}</span></div></div>`; };
+  document.getElementById('pv').innerHTML = ET.slice(1).map((e) => { const f = D.plan[e.fase], pm = f.canales.Meta, py = f.canales.YouTube, pd = f.canales.Display, tm = T('Meta', e.id), ty = T('YouTube', e.id), td = T('Display', e.id);
+    let h = `<div class="pv-card" style="--c:${e.c}"><div class="pv-h"><h3>${e.nombre}</h3><small>Fase ${f.n} · ${esc(f.nombre)}</small></div>`;
+    h += `<div class="pv-ch" style="--cc:var(--c-meta)">Meta</div>` + meter('Alcance', RES.meta[e.id][0], pm.alcance, F.M, 'var(--c-meta)') + meter('Impresiones', tm.imp, pm.impresiones, F.M, 'var(--c-meta)');
+    if (pm.clics) h += meter('Clics en el enlace', D.extras.link_clicks, pm.clics, F.int, 'var(--c-meta)');
+    h += `<div class="pv-ch" style="--cc:var(--c-yt)">YouTube</div>` + meter('Views', ty.views, py.views, F.M, 'var(--c-yt)') + meter('Impresiones', ty.imp, py.impresiones, F.M, 'var(--c-yt)');
+    if (pd) h += `<div class="pv-ch" style="--cc:var(--c-gdn)">Display</div>` + meter('Impresiones', td.imp, pd.impresiones, F.M, 'var(--c-gdn)');
+    const tt = T(null, e.id);
+    h += `<div class="pv-foot"><div><small>Inversión</small><b class="num">${F.usd0(tt.costo)}</b></div><div><small>Días</small><b class="num">${tt.dias}</b></div><div><small>CPM</small><b class="num">${F.usd(tt.costo / tt.imp * 1000)}</b></div></div>`;
+    return h + '</div>'; }).join('');
+
+  // Entrega diaria
+  const fechas = [...new Set(R.map((r) => r.fecha))].sort();
+  document.getElementById('keys-ch').innerHTML = CH.map((c) => `<span style="--c:${CC[c]}">${c}</span>`).join('');
+  let met = 'impresiones';
+  const val = (c, f) => sum(R.filter((r) => r.canal === c && r.fecha === f), met);
+  const drawDia = () => { const box = document.getElementById('c-dia'), W = Math.max(box.clientWidth, 300), H = 280, m = { t: 14, r: 6, b: 26, l: 56 };
+    const tot = fechas.map((f) => CH.reduce((s, c) => s + val(c, f), 0)), max = Math.max(...tot) * 1.08 || 1, gw = (W - m.l - m.r) / fechas.length, bw = Math.max(1.5, gw * .78), y = (v) => H - m.b - v / max * (H - m.t - m.b);
+    const fmt = met === 'costo' ? (v) => '$' + nf(0).format(v) : F.M;
+    let g = '';
+    FASES.forEach(([a, b, c]) => { const i0 = fechas.findIndex((f) => f >= a), i1 = fechas.findLastIndex((f) => f <= b); if (i0 < 0 || i1 < i0) return; g += `<rect x="${m.l + i0 * gw}" y="${m.t}" width="${(i1 - i0 + 1) * gw}" height="${H - m.t - m.b}" style="fill:${c};opacity:.07"></rect>`; });
+    for (let k = 0; k <= 4; k++) { const v = max / 1.08 * k / 4; g += `<line x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}" style="stroke:var(--line)"></line><text x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${fmt(v)}</text>`; }
+    fechas.forEach((f, i) => { let acc = 0; const x = m.l + i * gw + (gw - bw) / 2, op = f === ult && enCurso ? .5 : 1;
+      CH.forEach((c) => { const v = val(c, f); if (!v) return; g += `<rect x="${x}" y="${y(acc + v)}" width="${bw}" height="${y(acc) - y(acc + v)}" style="fill:${CC[c]};opacity:${op}"></rect>`; acc += v; });
+      if (f.endsWith('-01') || i === 0) g += `<text x="${x + bw / 2}" y="${H - 8}" text-anchor="middle">${F.fecha(f)}</text>`;
+      g += `<rect data-i="${i}" x="${m.l + i * gw}" y="${m.t}" width="${gw}" height="${H - m.t - m.b}" style="fill:transparent"></rect>`; });
+    box.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${met} por día y canal">${g}</svg>`;
+    const tp = tipFor(box);
+    box.querySelectorAll('rect[data-i]').forEach((rc) => { const f = fechas[+rc.dataset.i]; const on = (ev) => tp.show(ev, [F.fecha(f) + (f === ult && enCurso ? ' (en curso)' : ''), ...CH.filter((c) => val(c, f)).map((c) => c + ': ' + (met === 'costo' ? F.usd(val(c, f)) : F.int(val(c, f))))]); rc.addEventListener('pointermove', on); rc.addEventListener('pointerdown', on); rc.addEventListener('pointerleave', () => tp.hide()); }); };
+  segs('seg-met', (v) => { met = v; drawDia(); });
+
+  // Hallazgos
+  const te = (e) => ({ m: T('Meta', e), y: T('YouTube', e) });
+  const ex = te('expectativa'), la = te('lanzamiento'), co = te('colecciona');
+  const vtr = (t) => t.views / t.imp;
+  const topYT = [...ET.slice(1)].sort((a, b) => vtr(te(b.id).y) - vtr(te(a.id).y))[0];
+  document.getElementById('finds').innerHTML = [
+    ['Plan', 'var(--green)', `Las tres etapas superan sus metas de impresiones en Meta: Expectativa ${F.pct(ex.m.imp / D.plan[0].canales.Meta.impresiones)}, Lanzamiento ${F.pct(la.m.imp / D.plan[1].canales.Meta.impresiones)} y Colecciona ${F.pct(co.m.imp / D.plan[2].canales.Meta.impresiones)} de la meta.`],
+    ['YouTube', 'var(--c-yt)', `<b>${topYT.nombre}</b> tiene el mejor VTR en YouTube: <b>${F.pct1(vtr(te(topYT.id).y))}</b> de las impresiones terminaron en view. En total van <b>${F.int(G.yt.views)}</b> views a un CPV de ${'$' + nf(4).format(G.yt.costo / G.yt.views)}.`],
+    ['Tráfico', 'var(--red)', `Colecciona lleva <b>${F.int(D.extras.link_clicks)}</b> clics en el enlace en Meta (meta de la fase: ${F.int(D.plan[2].canales.Meta.clics)}) y la campaña de tráfico generó <b>${F.int(D.extras.lpv)}</b> visitas al sitio para registrar latas.`]
+  ].map(([k, c, t]) => `<div class="find" style="--c:${c}"><small>${k}</small>${t}</div>`).join('');
+
+  // Por etapa
+  let etapa = 'global', creCh = 'Meta', audCh = 'Meta';
+  document.getElementById('tabs').innerHTML = ET.map((e, i) => `<button type="button" data-v="${e.id}" aria-pressed="${i === 0}" style="--c:${e.c}"><i>${e.n}</i><span>${e.nombre}<br><small>${e.sub}</small></span></button>`).join('');
+  const chTile = (c, e) => { const t = T(c, e); if (!t.imp) return ''; const k = c === 'Meta' ? 'meta' : c === 'YouTube' ? 'youtube' : 'display'; const rs = (RES[k] || {})[e === 'global' && c === 'Display' ? 'colecciona' : e];
+    const rows = [[c === 'Meta' ? 'Alcance' : 'Usuarios únicos', rs ? F.int(rs[0]) : '—'], ['Frecuencia', rs ? F.d2(rs[1]) : '—'], ['Impresiones', F.int(t.imp)], ['Inversión', F.usd(t.costo)], ['CPM', F.usd(t.costo / t.imp * 1000)]];
+    if (c === 'Meta') rows.push(['Interacciones', F.int(t.inter)], ['Clics', F.int(t.clics)], ['Reproducciones de video', F.int(t.repro)]);
+    if (c === 'YouTube') rows.push(['Views', F.int(t.views)], ['VTR', F.pct1(t.views / t.imp)], ['CPV', '$' + nf(4).format(t.costo / t.views)], ['Clics', F.int(t.clics)]);
+    if (c === 'Display') rows.push(['Clics', F.int(t.clics)], ['CTR', F.pct2(t.clics / t.imp)]);
+    return `<div class="ch" style="--cc:${CC[c]}"><h4>${c}<small>${F.fecha(t.desde)} – ${F.fecha(t.hasta)}</small></h4><div class="kv">${rows.map(([a, b]) => `<span>${a}</span><b class="num">${b}</b>`).join('')}</div></div>`; };
+  const ytThumb = (id) => `https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg`;
+  const crePool = (c, e) => { const C = D.creativos, es = e === 'global' ? ['expectativa', 'lanzamiento', 'colecciona'] : [e];
+    if (c === 'Meta') { const t = {}; es.forEach((x) => (C.meta[x] || []).forEach((r) => { const o = t[r.anuncio] ||= { ...r, impresiones: 0, alcance: 0, etapas: [] }; o.impresiones += r.impresiones; o.alcance += r.alcance; o.etapas.push(x); })); return Object.values(t).sort((a, b) => b.impresiones - a.impresiones); }
+    if (c === 'YouTube') { const t = {}; es.forEach((x) => (C.youtube[x] || []).forEach((r) => { const o = t[r.video] ||= { ...r, views: 0 }; o.views += r.views; })); return Object.values(t).sort((a, b) => b.views - a.views); }
+    return es.includes('colecciona') ? C.display : []; };
+  const drawCre = () => { const chs = CH.filter((c) => crePool(c, etapa).length); if (!chs.includes(creCh)) creCh = chs[0];
+    document.getElementById('seg-cre').innerHTML = chs.map((c) => `<button type="button" data-v="${c}" aria-pressed="${c === creCh}">${c}</button>`).join('');
+    const pool = crePool(creCh, etapa), top = pool.slice(0, 10), box = document.getElementById('cres');
+    if (creCh === 'Meta') { document.getElementById('cre-sub').textContent = 'Anuncios de Meta ordenados por impresiones. Los BOOST son publicaciones de las latas por departamento (FB = Facebook, IG = Instagram).';
+      const NET = (n) => /_IG_/.test(n) ? ['Instagram', 'var(--c-ig)'] : /_FB_/.test(n) ? ['Facebook', 'var(--c-meta)'] : ['Meta', 'var(--green)'];
+      const DEP = (n) => { const m = n.match(/LATA_(.+)$/) || n.match(/^BOOST_(?:FB|IG)_(.+)$/); return m ? m[1].replace(/_/g, ' ') : /ALMA/.test(n) ? 'Alma Pinolera' : /GANADORES/.test(n) ? 'Ganadores' : /CN|COLECCIONA/.test(n) ? 'Colecciona' : 'Celebremos'; };
+      box.innerHTML = top.map((r, i) => `<article class="cre"><div class="thumb mt"><div class="ph big">${esc(DEP(r.anuncio))}</div><span class="rank">#${i + 1}</span><span class="net" style="--n:${NET(r.anuncio)[1]}">${NET(r.anuncio)[0]}</span></div><div class="cre-body"><div class="cre-name">${esc(r.anuncio.replace(/_/g, ' '))}</div><div><span>Impresiones</span><b class="num">${F.M(r.impresiones)}</b></div><div><span>Alcance</span><b class="num">${F.M(r.alcance)}</b></div>${r.q100 ? `<div><span>Vio el 100%</span><b class="num">${F.int(r.q100)}</b></div>` : ''}<div><span>Fechas</span><b>${F.fecha(r.desde)} – ${F.fecha(r.hasta)}</b></div></div></article>`).join(''); }
+    else if (creCh === 'YouTube') { document.getElementById('cre-sub').textContent = 'Videos de YouTube ordenados por views. Toca un video para abrirlo.';
+      box.innerHTML = top.map((r, i) => `<a class="cre" href="https://www.youtube.com/watch?v=${encodeURIComponent(r.video)}" target="_blank" rel="noopener"><div class="thumb"><img src="${ytThumb(r.video)}" alt="Video ${esc(r.video)}" loading="lazy" onerror="this.remove()"><div class="ph" style="z-index:-1">${esc(r.video)}</div><span class="rank">#${i + 1}</span><span class="play" aria-hidden="true"></span></div><div class="cre-body"><div class="cre-name">${esc(r.video)}</div><div><span>Views</span><b class="num">${F.int(r.views)}</b></div><div><span>Fechas</span><b>${F.fecha(r.desde)} – ${F.fecha(r.hasta)}</b></div></div></a>`).join(''); }
+    else { document.getElementById('cre-sub').textContent = 'Banners de Display ordenados por impresiones (datos por banner al ' + F.fecha(D.creativos.display.reduce((a, r) => r.hasta > a ? r.hasta : a, '')) + ').';
+      box.innerHTML = top.map((r, i) => `<article class="cre"><div class="thumb ban"><img src="${esc(r.url)}" alt="Banner ${i + 1}" loading="lazy" onerror="this.remove()"><span class="rank">#${i + 1}</span></div><div class="cre-body"><div><span>Impresiones</span><b class="num">${F.M(r.impresiones)}</b></div><div><span>Clics</span><b class="num">${F.int(r.clics)}</b></div><div><span>CTR</span><b class="num">${F.pct2(r.clics / r.impresiones)}</b></div></div></article>`).join(''); }
+    document.getElementById('cre-more').textContent = pool.length > top.length ? `Se muestran los ${top.length} principales de ${pool.length}.` : ''; };
+  segs('seg-cre', (v) => { creCh = v; drawCre(); });
+  const audKey = (c) => c === 'Meta' ? 'meta' : c === 'YouTube' ? 'youtube' : 'display';
+  const drawAud = () => { const chs = CH.filter((c) => (D.audiencia[audKey(c)] || {})[etapa === 'global' && c === 'Display' ? 'colecciona' : etapa]); if (!chs.includes(audCh)) audCh = chs[0];
+    document.getElementById('seg-aud').innerHTML = chs.map((c) => `<button type="button" data-v="${c}" aria-pressed="${c === audCh}">${c}</button>`).join('');
+    const a = D.audiencia[audKey(audCh)][etapa === 'global' && audCh === 'Display' ? 'colecciona' : etapa], col = CC[audCh];
+    document.getElementById('aud-sub').textContent = audCh === 'Meta' ? 'Distribución del alcance por segmento.' : audCh === 'YouTube' ? 'Distribución de views por segmento según Google Ads (sin segmentos indeterminados).' : 'Distribución de impresiones por segmento según Google Ads (sin segmentos indeterminados).';
+    const gen = a.genero.filter(([k]) => k !== 'unknown'), gt = gen.reduce((s, [, v]) => s + v, 0), GN = { female: 'Mujeres', male: 'Hombres' }, GCOL = { female: 'var(--red)', male: 'var(--green)' };
+    const edad = a.edad.filter(([k]) => k !== 'unknown').sort((x, y) => x[0].localeCompare(y[0])), et = edad.reduce((s, [, v]) => s + v, 0), em = Math.max(...edad.map(([, v]) => v));
+    const reg = a.region, rt = reg.reduce((s, [, v]) => s + v, 0), top = reg.slice(0, 7), rm = top[0][1];
+    document.getElementById('aud').innerHTML = `<div><h4>Género</h4><div class="gbar">${gen.map(([k, v]) => `<i style="width:${v / gt * 100}%;background:${GCOL[k]}"></i>`).join('')}</div><div class="gl">${gen.map(([k, v]) => `<div><i style="background:${GCOL[k]}"></i><span>${GN[k]}</span><b class="num">${F.pct(v / gt)}</b></div>`).join('')}</div></div>
+      <div><h4>Edad</h4><div class="rows">${edad.map(([k, v]) => `<div class="hb" style="--c:${col}"><span>${k}</span><div><i style="width:${v / em * 100}%"></i></div><b class="num">${F.pct(v / et)}</b></div>`).join('')}</div></div>
+      <div><h4>Departamento · top 7</h4><div class="rows">${top.map(([k, v]) => `<div class="hb" style="--c:${col}"><span>${esc(k)}</span><div><i style="width:${v / rm * 100}%"></i></div><b class="num">${F.pct(v / rt)}</b></div>`).join('')}</div></div>`; };
+  segs('seg-aud', (v) => { audCh = v; drawAud(); });
+  const drawEtapa = () => { document.getElementById('ch-tiles').innerHTML = CH.map((c) => chTile(c, etapa)).join(''); drawCre(); drawAud(); };
+  const setEtapa = (v) => { etapa = v; document.querySelectorAll('#tabs button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.v === v))); drawEtapa(); };
+  segs('tabs', setEtapa);
+  document.querySelectorAll('.stage').forEach((a) => a.addEventListener('click', () => setEtapa(a.dataset.e)));
+
+  // Detalle
+  let detCh = 'Meta';
+  document.getElementById('seg-det').innerHTML = CH.map((c, i) => `<button type="button" data-v="${c}" aria-pressed="${i === 0}">${c}</button>`).join('');
+  const drawTabla = () => { const rs = R.filter((r) => r.canal === detCh).sort((a, b) => b.fecha.localeCompare(a.fecha) || a.campana.localeCompare(b.campana));
+    const extra = detCh === 'Meta' ? [['Interacciones', 'interacciones'], ['Clics', 'clics'], ['Reproducciones', 'reproducciones']] : detCh === 'YouTube' ? [['Views', 'views'], ['Clics', 'clics']] : [['Clics', 'clics']];
+    const tr = (r, tot) => `<tr class="${tot ? 'tot' : r.fecha === ult && enCurso ? 'partial' : ''}"><td>${tot ? 'Total' : F.fecha(r.fecha)}</td><td>${tot ? '' : `<span class="mk" style="--c:${ET.find((e) => e.id === r.etapa).c}">${ET.find((e) => e.id === r.etapa).nombre}</span>`}</td><td>${tot ? '' : esc(r.campana)}</td><td class="num">${tot ? '—' : F.int(r.alcance)}</td><td class="num">${F.int(r.impresiones)}</td>${extra.map(([, k]) => `<td class="num">${F.int(r[k] || 0)}</td>`).join('')}<td class="num">${F.usd(r.costo)}</td><td class="num">${F.usd(r.costo / r.impresiones * 1000)}</td></tr>`;
+    const totR = { impresiones: sum(rs, 'impresiones'), costo: sum(rs, 'costo') }; extra.forEach(([, k]) => { totR[k] = sum(rs, k); });
+    document.getElementById('tbl').innerHTML = `<thead><tr><th>Fecha</th><th>Etapa</th><th>Campaña</th><th>${detCh === 'Meta' ? 'Alcance' : 'Usuarios'}</th><th>Impresiones</th>${extra.map(([h]) => `<th>${h}</th>`).join('')}<th>Inversión</th><th>CPM</th></tr></thead><tbody>` + rs.map((r) => tr(r)).join('') + tr(totR, true) + '</tbody>'; };
+  segs('seg-det', (v) => { detCh = v; drawTabla(); });
+
+  const links = [...document.querySelectorAll('.nav a')];
+  const spy = () => { let cur = links[0].dataset.t; links.forEach((a) => { const t = document.getElementById(a.dataset.t); if (t && t.getBoundingClientRect().top <= 120) cur = a.dataset.t; }); links.forEach((a) => a.classList.toggle('on', a.dataset.t === cur)); };
+  addEventListener('scroll', () => requestAnimationFrame(spy), { passive: true });
+  const layout = () => { drawDia(); spy(); };
+  drawEtapa(); drawTabla(); layout();
+  let w = innerWidth, t; addEventListener('resize', () => { clearTimeout(t); t = setTimeout(() => { if (innerWidth !== w) { w = innerWidth; layout(); } }, 150); });
+})();
+</script>
+</body>
+</html>
