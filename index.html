@@ -311,6 +311,19 @@ details.notes summary { color: #fff; }
 .camp-h { background: radial-gradient(520px 260px at 100% 0%, color-mix(in srgb, var(--c) 35%, transparent), transparent 70%), linear-gradient(120deg, #0d8538, #075a25 75%); }
 .card, .tile, .ch { box-shadow: 0 10px 24px rgba(0,0,0,.28); }
 
+/* Tarjetas con la textura verde de la portada */
+.card, .tile, .ch { --fg: #fff; --muted: rgba(255,255,255,.72); --line: rgba(255,255,255,.14); --panel-2: rgba(0,0,0,.26); color: var(--fg); background: #023d16 url(img/textura.webp) center top / 900px auto repeat; }
+.card .blk-t { color: #fff; }
+.card .blk-t small { color: rgba(255,255,255,.7); }
+.card .seg button[aria-pressed="true"] { background: var(--gold); color: #1f1500; }
+.card .seg button { color: rgba(255,255,255,.78); }
+.card .mbar { background: rgba(255,255,255,.12); }
+.card .meter-foot .ok { color: #6ee08f; }
+.card .tbl-wrap.scroll th { background: #04461b; }
+.card .thumb { box-shadow: inset 0 0 0 1px rgba(255,255,255,.12); }
+.tip { color: #12301c; }
+.tip div { color: #12301c; }
+
 @media (max-width: 1180px) {
   .hero { grid-template-columns: 1fr; }
   .hero-side { padding: 0 32px 34px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -444,7 +457,7 @@ details.notes summary { color: #fff; }
   </aside>
 </div>
 
-<script src="datos.js?v=5"></script>
+<script src="datos.js?v=6"></script>
 <script>
 (() => {
   const D = window.TN_DATA, R = D.diario;
@@ -579,7 +592,7 @@ details.notes summary { color: #fff; }
   const GSPEC = { Meta: [['Alcance vs. impresiones', 'impresiones', 'alcance'], ['Impresiones vs. interacciones', 'impresiones', 'interacciones'], ['Views por día', 'reproducciones']],
     YouTube: [['Views vs. impresiones', 'impresiones', 'views'], ['Views vs. costo', 'views', 'costo'], ['Views por día', 'views']],
     Display: [['Clics vs. costo', 'clics', 'costo'], ['Impresiones vs. CPM', 'impresiones', 'cpm'], ['Usuarios por día', 'alcance']] };
-  const LINE = { Meta: 'var(--red)', YouTube: 'var(--green-d)', Display: 'var(--green-d)' };
+  const LINE = { Meta: '#ff6b6b', YouTube: 'var(--gold)', Display: '#ffffff' };
   const combo = (box, fechas, A, B, ka, kb, ca, cb) => { const W = Math.max(box.clientWidth, 240), H = 210, m = { t: 10, r: B ? 46 : 8, b: 22, l: 46 };
     const ma = Math.max(...A) * 1.1 || 1, mb = B ? Math.max(...B) * 1.1 || 1 : 1, gw = (W - m.l - m.r) / fechas.length, bw = Math.max(1.2, gw * .72);
     const ya = (v) => H - m.b - v / ma * (H - m.t - m.b), yb = (v) => H - m.b - v / mb * (H - m.t - m.b), fa = GFM(ka), fb = B ? GFM(kb) : null, every = Math.ceil(fechas.length / Math.max(3, Math.floor(W / 64)));
@@ -621,7 +634,7 @@ details.notes summary { color: #fff; }
     st.root.querySelector('[data-k="aud"]').innerHTML = chs.map((c) => `<button type="button" data-v="${c}" aria-pressed="${c === audCh}">${chName(c, etapa)}</button>`).join('');
     const a = D.audiencia[audKey(audCh)][ak(audCh)], col = CC[audCh];
     st.q('aud-sub').textContent = audCh === 'Meta' ? 'Distribución del alcance por segmento.' : audCh === 'YouTube' ? 'Distribución de views por segmento según Google Ads (sin segmentos indeterminados).' : 'Distribución de impresiones por segmento según Google Ads (sin segmentos indeterminados).';
-    const gen = a.genero.filter(([k]) => k !== 'unknown'), gt = gen.reduce((s, [, v]) => s + v, 0), GN = { female: 'Mujeres', male: 'Hombres' }, GCOL = { female: 'var(--red)', male: 'var(--green)' };
+    const gen = a.genero.filter(([k]) => k !== 'unknown'), gt = gen.reduce((s, [, v]) => s + v, 0), GN = { female: 'Mujeres', male: 'Hombres' }, GCOL = { female: 'var(--red)', male: 'var(--green-l)' };
     const edad = a.edad.filter(([k]) => k !== 'unknown').sort((x, y) => x[0].localeCompare(y[0])), et = edad.reduce((s, [, v]) => s + v, 0), em = Math.max(...edad.map(([, v]) => v));
     const reg = a.region, rt = reg.reduce((s, [, v]) => s + v, 0), top = reg.slice(0, 7), rm = top[0][1];
     st.q('aud').innerHTML = `<div><h4>Género</h4><div class="gbar">${gen.map(([k, v]) => `<i style="width:${v / gt * 100}%;background:${GCOL[k]}"></i>`).join('')}</div><div class="gl">${gen.map(([k, v]) => `<div><i style="background:${GCOL[k]}"></i><span>${GN[k]}</span><b class="num">${F.pct(v / gt)}</b></div>`).join('')}</div></div>
