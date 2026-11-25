@@ -103,7 +103,10 @@ button, select, input, textarea, table, svg, svg text { font-family: "Montserrat
 .pv-foot div { background: var(--panel-2); border-radius: 10px; padding: 8px 10px; }
 .pv-foot small { display: block; font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .pv-foot b { font-size: 14px; font-weight: 800; }
-.thumb.mt { aspect-ratio: 16 / 7; }
+.thumb.mt { aspect-ratio: 4 / 3; overflow: hidden; }
+.thumb.mt .bgi { position: absolute; inset: -12px; background: center / cover no-repeat; filter: blur(14px) brightness(.55); }
+.thumb.mt img.fg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; z-index: 1; }
+.thumb.mt .rank, .thumb.mt .net { z-index: 2; }
 .thumb .net { position: absolute; right: 8px; top: 8px; z-index: 2; font-size: 10.5px; font-weight: 800; color: #fff; padding: 2px 8px; border-radius: 999px; background: var(--n); }
 .thumb .ph.big { font-size: 15px; letter-spacing: .02em; }
 .pv-h { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
@@ -621,13 +624,15 @@ details.notes summary { color: #fff; }
     const usesReach = spec.some(([, a, b]) => a === 'alcance' || b === 'alcance');
     st.q('gra-sub').textContent = `${chName(c, p)} · ${F.fecha(fechas[0])} – ${F.fecha(fechas[fechas.length - 1])}. Barras en el eje izquierdo y línea en el eje derecho.` + (usesReach ? ` ${c === 'Meta' ? 'El alcance de cada día no se suma' : 'Los usuarios de cada día no se suman'} entre días${p === 'global' ? '; en Global, el valor de un día suma las campañas activas ese día' : ''}.` : ''); };
 
+  const META_IMG = ['PPV_ALMA_PINOLERA_COLETILLA', 'BOOST_CN_FB_22_OCT', 'PPV_COLECCIONA_NICARAGUA', 'BOOST_CN_IG_22_OCT', 'PPL_CN_V1'];
+  const metaThumb = (n) => META_IMG.includes(n) ? `<span class="bgi" style="background-image:url('img/meta/${n}.webp')"></span><img class="fg" src="img/meta/${n}.webp" alt="Creativo ${esc(n.replace(/_/g, ' '))}" loading="lazy">` : '';
   const drawCre = (st) => { const etapa = st.e.id, chs = CH.filter((c) => crePool(c, etapa).length); if (!chs.includes(st.cre)) st.cre = chs[0]; const creCh = st.cre;
     st.root.querySelector('[data-k="cre"]').innerHTML = chs.map((c) => `<button type="button" data-v="${c}" aria-pressed="${c === creCh}">${chName(c, etapa)}</button>`).join('');
     const pool = crePool(creCh, etapa), top = pool.slice(0, 10), box = st.q('cres'), subEl = st.q('cre-sub');
     if (creCh === 'Meta') { subEl.textContent = 'Anuncios de Meta ordenados por impresiones. Los BOOST son publicaciones de las latas por departamento (FB = Facebook, IG = Instagram).';
       const NET = (n) => /_IG_/.test(n) ? ['Instagram', 'var(--c-ig)'] : /_FB_/.test(n) ? ['Facebook', 'var(--c-meta)'] : ['Meta', 'var(--green)'];
       const DEP = (n) => { const m = n.match(/LATA_(.+)$/) || n.match(/^BOOST_(?:FB|IG)_(.+)$/); return m ? m[1].replace(/_/g, ' ') : /ALMA/.test(n) ? 'Alma Pinolera' : /GANADORES/.test(n) ? 'Ganadores' : /CN|COLECCIONA/.test(n) ? 'Colecciona' : 'Celebremos'; };
-      box.innerHTML = top.map((r, i) => `<article class="cre"><div class="thumb mt"><div class="ph big">${esc(DEP(r.anuncio))}</div><span class="rank">#${i + 1}</span><span class="net" style="--n:${NET(r.anuncio)[1]}">${NET(r.anuncio)[0]}</span></div><div class="cre-body"><div class="cre-name">${esc(r.anuncio.replace(/_/g, ' '))}</div><div><span>Impresiones</span><b class="num">${F.M(r.impresiones)}</b></div><div><span>Alcance</span><b class="num">${F.M(r.alcance)}</b></div>${r.q100 ? `<div><span>Vio el 100%</span><b class="num">${F.int(r.q100)}</b></div>` : ''}<div><span>Fechas</span><b>${F.fecha(r.desde)} – ${F.fecha(r.hasta)}</b></div></div></article>`).join(''); }
+      box.innerHTML = top.map((r, i) => `<article class="cre"><div class="thumb mt"><div class="ph big">${esc(DEP(r.anuncio))}</div>${metaThumb(r.anuncio)}<span class="rank">#${i + 1}</span><span class="net" style="--n:${NET(r.anuncio)[1]}">${NET(r.anuncio)[0]}</span></div><div class="cre-body"><div class="cre-name">${esc(r.anuncio.replace(/_/g, ' '))}</div><div><span>Impresiones</span><b class="num">${F.M(r.impresiones)}</b></div><div><span>Alcance</span><b class="num">${F.M(r.alcance)}</b></div>${r.q100 ? `<div><span>Vio el 100%</span><b class="num">${F.int(r.q100)}</b></div>` : ''}<div><span>Fechas</span><b>${F.fecha(r.desde)} – ${F.fecha(r.hasta)}</b></div></div></article>`).join(''); }
     else if (creCh === 'YouTube') { subEl.textContent = 'Videos de YouTube ordenados por views. Toca un video para abrirlo.';
       box.innerHTML = top.map((r, i) => `<a class="cre" href="https://www.youtube.com/watch?v=${encodeURIComponent(r.video)}" target="_blank" rel="noopener"><div class="thumb"><img src="${ytThumb(r.video)}" alt="Video ${esc(r.video)}" loading="lazy" onerror="this.remove()"><div class="ph" style="z-index:-1">${esc(r.video)}</div><span class="rank">#${i + 1}</span><span class="play" aria-hidden="true"></span></div><div class="cre-body"><div class="cre-name">${esc(r.video)}</div><div><span>Views</span><b class="num">${F.int(r.views)}</b></div><div><span>Fechas</span><b>${F.fecha(r.desde)} – ${F.fecha(r.hasta)}</b></div></div></a>`).join(''); }
     else { subEl.textContent = 'Banners de Display ordenados por impresiones (datos por banner al ' + F.fecha(D.creativos.display.reduce((a, r) => r.hasta > a ? r.hasta : a, '')) + ').';
