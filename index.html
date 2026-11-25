@@ -524,7 +524,7 @@ details.notes summary { color: #fff; }
 
   const ytThumb = (id) => `https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg`;
   const crePool = (c, e) => { const C = D.creativos, es = e === 'global' ? ['expectativa', 'lanzamiento', 'colecciona'] : [e];
-    if (c === 'Meta') { const t = {}; es.forEach((x) => (C.meta[x] || []).filter((r) => !(x === 'colecciona' && /ALMA/.test(r.anuncio))).forEach((r) => { const o = t[r.anuncio] ||= { ...r, impresiones: 0, alcance: 0, etapas: [] }; o.impresiones += r.impresiones; o.alcance += r.alcance; o.etapas.push(x); })); return Object.values(t).sort((a, b) => b.impresiones - a.impresiones); }
+    if (c === 'Meta') { const t = {}; es.forEach((x) => (C.meta[x] || []).forEach((r) => { const o = t[r.anuncio] ||= { ...r, impresiones: 0, alcance: 0, etapas: [] }; o.impresiones += r.impresiones; o.alcance += r.alcance; o.etapas.push(x); })); return Object.values(t).sort((a, b) => b.impresiones - a.impresiones); }
     if (c === 'YouTube') { const t = {}; es.forEach((x) => (C.youtube[x] || []).forEach((r) => { const o = t[r.video] ||= { ...r, views: 0 }; o.views += r.views; })); return Object.values(t).sort((a, b) => b.views - a.views); }
     return es.includes('colecciona') ? C.display : []; };
 
