@@ -12,8 +12,8 @@ ETAPA_META = {'E': 'expectativa', 'L': 'lanzamiento', 'L2': 'lanzamiento', 'A': 
 ETAPA_YT = {'E': 'expectativa', 'L': 'lanzamiento', 'A': 'lanzamiento', 'C': 'colecciona'}
 CAMP_META = {'E': 'Expectativa', 'L': 'Lanzamiento', 'L2': 'Lanzamiento (conjunto 2)', 'A': 'Alma Pinolera', 'C': 'Colecciona · alcance', 'T': 'Colecciona · tráfico'}
 CAMP_YT = {'E': 'Expectativa', 'L': 'Lanzamiento', 'A': 'Alma Pinolera', 'C': 'Colecciona · video'}
-LPV_TRF = 51140            # Landing page views de la campaña de tráfico (bloque COLECCIONA, columna FV)
-LINK_CLICKS_COLECCIONA = 93788  # Link clicks del bloque COLECCIONA (alcance 23,351 + tráfico 70,437)
+LPV_TRF = 53639            # Landing page views de la campaña de tráfico (bloque COLECCIONA, columna FV)
+LINK_CLICKS_COLECCIONA = 98134  # Link clicks del bloque COLECCIONA (alcance + tráfico), hasta el 24 nov
 
 diario = []
 for f, c, a, i, e, k, cpm, cost, v in rows('meta_diario.txt'):
@@ -48,7 +48,7 @@ plan = [dict(n=f['n'], nombre=f['nombre'], ini=f['ini'], fin=f['fin'], presupues
 ult = max(r['fecha'] for r in diario)
 out = dict(actualizado=ult, diario=diario, resumen=A['resumen'], audiencia={k: v for k, v in A.items() if k != 'resumen'},
            creativos=dict(meta=cre_meta, youtube=cre_yt, display=cre_gdn), plan=plan, total_plan=P.TOTAL_CAMPANA,
-           extras=dict(lpv=LPV_TRF, link_clicks=LINK_CLICKS_COLECCIONA))
+           extras=dict(lpv=LPV_TRF, link_clicks=LINK_CLICKS_COLECCIONA, lpv_diario=[l.split() for l in open(os.path.join(D0, 'meta_lpv.txt')) if l[:1] == '2']))
 open(os.path.join(D0, '..', 'datos.js'), 'w', encoding='utf-8').write('window.TN_DATA = ' + json.dumps(out, ensure_ascii=False) + ';\n')
 tot = defaultdict(lambda: [0, 0.0])
 for r in diario: tot[(r['canal'], r['etapa'])][0] += r['impresiones']; tot[(r['canal'], r['etapa'])][1] += r['costo']
