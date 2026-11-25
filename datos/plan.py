@@ -15,7 +15,7 @@ FASES = [
        material=['Colecciona Nicaragua (50%)', 'Alma Pinolera (50%)'],
        canales=dict(Meta=dict(budget=5435.00, alcance=1049031, impresiones=13369521, frecuencia=5, clics=36000, cpm=0.30),
                     YouTube=dict(budget=4348.00, views=631000, impresiones=7000000, frecuencia=5, clics=31500, cpm=0.50),
-                    Display=dict(budget=2174.00, impresiones=3000000, frecuencia=3))),
+                    Display=dict(budget=2174.00, impresiones=3000000, frecuencia=3, clics=30000))),
   dict(n=4, nombre='Celebremos a lo Nica', ini='2026-11-16', fin='2026-12-31', presupuesto=10652.60,
        objetivo='Cerrar la campaña celebrando la unión de los nicaragüenses', mix=dict(Alcance=50, Interaccion=20, Views=30),
        material=['Alma Pinolera (70%)', 'Celebremos Nicaragua (30%)'],
