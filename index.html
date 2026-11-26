@@ -460,7 +460,7 @@ details.notes summary { color: #fff; }
   </aside>
 </div>
 
-<script src="datos.js?v=10"></script>
+<script src="datos.js?v=11"></script>
 <script>
 (() => {
   const D = window.TN_DATA, R = D.diario;
@@ -505,8 +505,8 @@ details.notes summary { color: #fff; }
     ['eye', 'Impresiones totales', F.int(imp), 'CPM promedio <b>' + F.usd(inv / imp * 1000) + '</b>'],
     ['play', 'Views en YouTube', F.int(G.yt.views), 'VTR <b>' + F.pct1(G.yt.views / G.yt.imp) + '</b> · CPV ' + '$' + nf(4).format(G.yt.costo / G.yt.views)]];
   document.getElementById('kc').innerHTML = kc.map(([ic, a, b, c]) => `<div class="kc-i"><i>${ICO[ic]}</i><div><small>${a}</small><b class="num">${b}</b><span>${c}</span></div></div>`).join('');
-  const tiles = [['Alcance Meta', F.int(RES.meta.global[0]), 'personas únicas · frecuencia ' + F.d2(RES.meta.global[1]), 'var(--c-meta)'], ['Usuarios únicos YouTube', F.int(RES.youtube.global[0]), 'frecuencia ' + F.d2(RES.youtube.global[1]), 'var(--c-yt)'],
-    ['Usuarios únicos Display', F.int(RES.display.colecciona[0]), 'frecuencia ' + F.d2(RES.display.colecciona[1]), 'var(--c-gdn)']];
+  const tiles = [['Alcance Meta', F.int(RES.meta.global[0]), 'personas únicas · frecuencia ' + F.d2(RES.meta.global[1]), 'var(--c-meta)'], ['Views YouTube', F.int(G.yt.views), 'VTR ' + F.pct1(G.yt.views / G.yt.imp) + ' · CPV $' + nf(4).format(G.yt.costo / G.yt.views), 'var(--c-yt)'],
+    ['Impresiones Display', F.int(G.gdn.imp), 'CPM ' + F.usd(G.gdn.costo / G.gdn.imp * 1000) + ' · CTR ' + F.pct2(G.gdn.clics / G.gdn.imp), 'var(--c-gdn)']];
   document.getElementById('tiles').innerHTML = tiles.map(([a, b, c, col]) => `<div class="tile" style="--c:${col}"><small>${a}</small><b class="num">${b}</b><span>${c}</span></div>`).join('');
   document.getElementById('back-cap').textContent = 'Datos al ' + F.fecha(D.actualizado) + ' · CCCP UM Nicaragua';
 
@@ -592,11 +592,11 @@ details.notes summary { color: #fff; }
 
   // Gráficos por canal: barras (serie A, eje izq.) + línea (serie B, eje der.)
   const LPVD = Object.fromEntries((D.extras.lpv_diario || []).map(([f, k, v]) => [f, { lclics: +k, lpv: +v }]));
-  const GLB = { lclics: () => 'Clics en el enlace', lpv: () => 'Visitas a la página', alcance: (c) => c === 'Meta' ? 'Alcance' : 'Usuarios', impresiones: () => 'Impresiones', interacciones: () => 'Interacciones', reproducciones: () => 'Views', views: () => 'Views', costo: () => 'Inversión', clics: () => 'Clics', cpm: () => 'CPM' };
+  const GLB = { acum: () => 'Views acumuladas', lclics: () => 'Clics en el enlace', lpv: () => 'Visitas a la página', alcance: (c) => c === 'Meta' ? 'Alcance' : 'Usuarios', impresiones: () => 'Impresiones', interacciones: () => 'Interacciones', reproducciones: () => 'Views', views: () => 'Views', costo: () => 'Inversión', clics: () => 'Clics', cpm: () => 'CPM' };
   const GFM = (k) => k === 'costo' ? (v) => '$' + nf(v >= 100 ? 0 : 2).format(v) : k === 'cpm' ? (v) => '$' + nf(2).format(v) : F.M;
   const GFT = (k) => k === 'costo' || k === 'cpm' ? (v) => '$' + nf(2).format(v) : F.int;
-  const GSPEC = { Meta: [['Alcance vs. impresiones', 'impresiones', 'alcance'], ['Impresiones vs. interacciones', 'impresiones', 'interacciones'], ['Views por día', 'reproducciones']],
-    YouTube: [['Views vs. impresiones', 'impresiones', 'views'], ['Views vs. costo', 'views', 'costo'], ['Views por día', 'views']],
+  const GSPEC = { Meta: [['Alcance vs. impresiones', 'impresiones', 'alcance'], ['Impresiones vs. interacciones', 'impresiones', 'interacciones'], ['Views por día', 'reproducciones', 'acum']],
+    YouTube: [['Views vs. impresiones', 'impresiones', 'views'], ['Views vs. costo', 'views', 'costo'], ['Views por día', 'views', 'acum']],
     Display: [['Clics vs. costo', 'clics', 'costo'], ['Impresiones vs. CPM', 'impresiones', 'cpm'], ['Usuarios por día', 'alcance']] };
   const LINE = { Meta: '#ff6b6b', YouTube: 'var(--gold)', Display: '#ffffff' };
   const combo = (box, fechas, A, B, ka, kb, ca, cb) => { const W = Math.max(box.clientWidth, 240), H = 210, m = { t: 10, r: B ? 46 : 8, b: 22, l: 46 };
@@ -617,11 +617,11 @@ details.notes summary { color: #fff; }
     const tot = (k) => k === 'lclics' || k === 'lpv' ? fechas.reduce((a, f) => a + day(f, k), 0) : k === 'cpm' ? sum(rs, 'costo') / sum(rs, 'impresiones') * 1000 : sum(rs, k);
     const box = st.q('gra'), ca = CC[c], cb = LINE[c];
     box.innerHTML = spec.map(([t, ka, kb], i) => { const la = GLB[ka](c), lb = kb ? GLB[kb](c) : '';
-      const sm = [ka, kb].filter((k) => k && k !== 'alcance').map((k) => `<span>${k === 'cpm' ? 'CPM promedio' : GLB[k](c)}: <b class="num">${GFT(k)(tot(k))}</b></span>`).join('');
+      const sm = [ka, kb].filter((k) => k && k !== 'alcance' && k !== 'acum').map((k) => `<span>${k === 'cpm' ? 'CPM promedio' : GLB[k](c)}: <b class="num">${GFT(k)(tot(k))}</b></span>`).join('');
       return `<div class="gc"><h4>${t}</h4><div class="keys"><span style="--c:${ca}">${la}${kb ? ' (barras)' : ''}</span>${kb ? `<span class="ln" style="--c:${cb}">${lb} (línea)</span>` : ''}</div><div class="gsum">${sm}</div><div class="chart" data-g="${i}" data-la="${la}" data-lb="${lb}"></div></div>`; }).join('');
-    spec.forEach(([, ka, kb], i) => combo(box.querySelector(`[data-g="${i}"]`), fechas, fechas.map((f) => day(f, ka)), kb ? fechas.map((f) => day(f, kb)) : null, ka, kb, ca, cb));
-    const usesReach = spec.some(([, a, b]) => a === 'alcance' || b === 'alcance');
-    st.q('gra-sub').textContent = `${chName(c, p)} · ${F.fecha(fechas[0])} – ${F.fecha(fechas[fechas.length - 1])}. Barras en el eje izquierdo y línea en el eje derecho.` + (usesReach ? ` ${c === 'Meta' ? 'El alcance de cada día no se suma' : 'Los usuarios de cada día no se suman'} entre días${p === 'global' ? '; en Global, el valor de un día suma las campañas activas ese día' : ''}.` : ''); };
+    spec.forEach(([, ka, kb], i) => combo(box.querySelector(`[data-g="${i}"]`), fechas, fechas.map((f) => day(f, ka)), kb === 'acum' ? fechas.reduce((a, f) => (a.push((a[a.length - 1] || 0) + day(f, ka)), a), []) : kb ? fechas.map((f) => day(f, kb)) : null, ka, kb, ca, cb));
+    const usesAcum = spec.some(([, , b]) => b === 'acum'), usesReach = spec.some(([, a, b]) => a === 'alcance' || b === 'alcance');
+    st.q('gra-sub').textContent = `${chName(c, p)} · ${F.fecha(fechas[0])} – ${F.fecha(fechas[fechas.length - 1])}. Barras en el eje izquierdo y línea en el eje derecho.` + (usesAcum ? ' En views por día, la línea es el acumulado de views.' : '') + (usesReach ? ` ${c === 'Meta' ? 'El alcance de cada día no se suma' : 'Los usuarios de cada día no se suman'} entre días${p === 'global' ? '; en Global, el valor de un día suma las campañas activas ese día' : ''}.` : ''); };
 
   const META_IMG = ['PPV_ALMA_PINOLERA_COLETILLA', 'PPV_COLETILLA', 'BOOST_CN_FB_22_OCT', 'PPV_COLECCIONA_NICARAGUA', 'BOOST_CN_IG_22_OCT', 'PPL_CN_V1', 'BOOST_FB_LATA_RACCS', 'PPL_CN_V3', 'BOOST_IG_LATA_RIO_SAN_JUAN', 'BOOST_IG_LATA_CHINANDEGA', 'BOOST_IG_LATA_MADRIZ', 'BOOST_FB_LATA_CARAZO', 'BOOST_FB_LATA_JINOTEGA', 'BOOST_FB_LATA_BOACO', 'BOOST_FB_LATA_MASAYA', 'BOOST_FB_LATA_MANAGUA', 'BOOST_IG_LATA_NUEVA_SEGOVIA', 'BOOST_FB_LATA_ESTELI', 'PPL_GANADORES_S2', 'PPL_GANADORES_S3', 'PPL_GANADORES_S1', 'PPL_CN_V2'];
   const META_LANZ = ["BOOST_IG_LATA_RIO_SAN_JUAN", "BOOST_FB_LATA_MATAGALPA", "BOOST_FB_LATA_RACCS", "BOOST_IG_LATA_CARAZO", "BOOST_IG_LATA_GRANADA", "BOOST_IG_LATA_CHINANDEGA", "BOOST_IG_LATA_MANAGUA", "BOOST_IG_LATA_LEON", "BOOST_IG_LATA_MADRIZ"]; // artes propios de la campaña de Lanzamiento
