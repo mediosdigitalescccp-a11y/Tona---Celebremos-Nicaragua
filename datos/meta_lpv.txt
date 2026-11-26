@@ -1,4 +1,4 @@
-# Colecciona Meta (alcance + tráfico), bloque COLECCIONA FM:FV: fecha link_clicks landing_page_views
+# Colecciona Meta (alcance + tráfico), bloque COLECCIONA: fecha link_clicks landing_page_views
 2026-10-06 69 0
 2026-10-07 183 0
 2026-10-08 147 0
@@ -48,5 +48,5 @@
 2026-11-21 5896 3680
 2026-11-22 6577 4181
 2026-11-23 5009 2987
-2026-11-24 5238 3045
-2026-11-25 776 498
+2026-11-24 5271 3045
+2026-11-25 2966 1884
