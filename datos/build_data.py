@@ -12,8 +12,8 @@ ETAPA_META = {'E': 'expectativa', 'L': 'lanzamiento', 'L2': 'lanzamiento', 'A': 
 ETAPA_YT = {'E': 'expectativa', 'L': 'lanzamiento', 'A': 'lanzamiento', 'C': 'colecciona'}
 CAMP_META = {'E': 'Expectativa', 'L': 'Lanzamiento', 'L2': 'Lanzamiento (conjunto 2)', 'A': 'Alma Pinolera', 'C': 'Colecciona · alcance', 'T': 'Colecciona · tráfico'}
 CAMP_YT = {'E': 'Expectativa', 'L': 'Lanzamiento', 'A': 'Alma Pinolera', 'C': 'Colecciona · video'}
-LPV_TRF = 57383            # Landing page views de la campaña de tráfico (bloque COLECCIONA, columna FV)
-LINK_CLICKS_COLECCIONA = 104089  # Link clicks del bloque COLECCIONA (alcance + tráfico)
+LPV_TRF = 60588            # Landing page views de la campaña de tráfico (bloque COLECCIONA, columna FV)
+LINK_CLICKS_COLECCIONA = 109292  # Link clicks del bloque COLECCIONA (alcance + tráfico)
 
 diario = []
 for f, c, a, i, e, k, cpm, cost, v in rows('meta_diario.txt'):
