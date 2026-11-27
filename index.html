@@ -179,6 +179,8 @@ button, select, input, textarea, table, svg, svg text { font-family: "Montserrat
 .mk { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 9px; border-radius: 999px; color: #fff; background: var(--c); }
 .finds { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
 .find { background: var(--panel-2); border-radius: 12px; padding: 14px; border-left: 4px solid var(--c); font-size: 13px; line-height: 1.5; }
+.find-a { margin: 8px 0 0; padding-top: 8px; border-top: 1px dashed rgba(0,0,0,.15); font-size: 12.5px; opacity: .85; }
+.find-a b { color: var(--c); }
 .find small { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .08em; color: var(--c); margin-bottom: 4px; text-transform: uppercase; }
 
 details.notes { margin-top: 18px; color: var(--muted); font-size: 12.5px; }
@@ -412,7 +414,7 @@ details.notes summary { color: #fff; }
   <header class="camp-h" id="global" style="--c:var(--green-l)"></header>
   <section class="kc" id="kpis" aria-label="Indicadores principales"><img src="img/portada_kpis.webp" alt="" width="1672" height="941"><div class="kc-list" id="kc"></div></section>
   <section class="tiles t3" id="tiles" aria-label="Alcance y clics"></section>
-  <section class="exec" id="hallazgos" style="margin-top:var(--gap)"><img class="exec-logo" src="img/logo_tona.png" alt="Toña"><span class="exec-k">Hallazgos clave · Celebremos Nicaragua</span><h3>Resumen ejecutivo del desempeño digital</h3><div class="finds" id="finds"></div></section>
+  <section class="exec" id="hallazgos" style="margin-top:var(--gap)"><img class="exec-logo" src="img/logo_tona.png" alt="Toña"><span class="exec-k">Hallazgos estratégicos · Celebremos Nicaragua</span><h3>Aprendizajes para creatividad, pauta y momentos de consumo</h3><div class="finds" id="finds"></div></section>
   <div class="blk" id="blk-global"></div>
 
   <header class="camp-h" id="expectativa"></header>
@@ -516,11 +518,39 @@ details.notes summary { color: #fff; }
   const ex = te('expectativa'), la = te('lanzamiento'), co = te('colecciona');
   const vtr = (t) => t.views / t.imp;
   const topYT = [...ET.slice(1)].sort((a, b) => vtr(te(b.id).y) - vtr(te(a.id).y))[0];
-  document.getElementById('finds').innerHTML = [
-    ['Meta', 'var(--green)', `Las tres etapas superan sus metas de impresiones en Meta: Expectativa ${F.pct(ex.m.imp / D.plan[0].canales.Meta.impresiones)}, Lanzamiento ${F.pct(la.m.imp / D.plan[1].canales.Meta.impresiones)} y Colecciona ${F.pct(co.m.imp / D.plan[2].canales.Meta.impresiones)} de la meta.`],
-    ['YouTube', 'var(--c-yt)', `<b>${topYT.nombre}</b> tiene el mejor VTR en YouTube: <b>${F.pct1(vtr(te(topYT.id).y))}</b> de las impresiones terminaron en view. En total van <b>${F.int(G.yt.views)}</b> views a un CPV de ${'$' + nf(4).format(G.yt.costo / G.yt.views)}.`],
-    ['Tráfico', 'var(--red)', `Colecciona lleva <b>${F.int(D.extras.link_clicks)}</b> clics en el enlace en Meta (meta de la fase: ${F.int(D.plan[2].canales.Meta.clics)}) y la campaña de tráfico generó <b>${F.int(D.extras.lpv)}</b> visitas al sitio para registrar latas.`]
-  ].map(([k, c, t]) => `<div class="find" style="--c:${c}"><small>${k}</small>${t}</div>`).join('');
+  {
+    const base = R.filter((r) => !(r.fecha === ult && enCurso)), rate = (rs, k) => { const i = sum(rs, 'impresiones'); return i ? sum(rs, k) / i : 0; };
+    const mE = (e, k) => rate(base.filter((r) => r.canal === 'Meta' && r.etapa === e), k);
+    // Orgullo regional: retención (100% / 25%) de las latas por departamento
+    const latas = Object.values(D.creativos.meta).flat().filter((x) => /LATA_/.test(x.anuncio) && x.q25 > 1000);
+    const dep = {}; latas.forEach((x) => { const n = x.anuncio.split('LATA_').pop().replace(/_/g, ' '); const o = dep[n] ||= { n, q25: 0, q100: 0 }; o.q25 += x.q25; o.q100 += x.q100; });
+    const dl = Object.values(dep).map((o) => ({ ...o, r: o.q100 / o.q25 })).sort((a, b) => b.r - a.r);
+    const cap = (n) => ({ RACCS: 'RACCS', RACCN: 'RACCN' }[n] || n.toLowerCase().replace(/(^|\s)\S/g, (c) => c.toUpperCase()));
+    const top3 = dl.slice(0, 3), low3 = dl.slice(-3), avgR = (xs) => xs.reduce((s, x) => s + x.q100, 0) / xs.reduce((s, x) => s + x.q25, 0);
+    // Fin de semana vs. entre semana (Meta)
+    const wd = (f) => new Date(f + 'T12:00:00Z').getUTCDay(), meta = base.filter((r) => r.canal === 'Meta');
+    const fin = rate(meta.filter((r) => [0, 6].includes(wd(r.fecha))), 'interacciones'), sem = rate(meta.filter((r) => [2, 3, 4].includes(wd(r.fecha))), 'interacciones');
+    // Tráfico: clics vs. visitas
+    const lp = D.extras.lpv_diario.map(([f, k, v]) => [f, +k, +v]).filter(([f]) => !(f === ult && enCurso)), con = lp.filter((x) => x[2] > 0), sin = lp.filter((x) => x[2] === 0);
+    const kc = con.reduce((s, x) => s + x[1], 0), vc = con.reduce((s, x) => s + x[2], 0), pdC = kc / (con.length || 1), pdS = sin.reduce((s, x) => s + x[1], 0) / (sin.length || 1);
+    // Display: dispersión de CTR entre banners
+    const dsp = D.creativos.display.filter((x) => x.impresiones > 100000).map((x) => x.clics / x.impresiones).sort((a, b) => b - a);
+    const q = (xs, n) => xs.slice(0, n).reduce((s, x) => s + x, 0) / Math.min(n, xs.length);
+    const ctrTop = q(dsp, 5), ctrLow = q([...dsp].reverse(), 5);
+    // YouTube: VTR del himno por etapa
+    const yt = (e) => rate(base.filter((r) => r.canal === 'YouTube' && r.etapa === e), 'views');
+    const edad = (D.audiencia.meta.global.edad || []).slice().sort((a, b) => b[1] - a[1]), edT = edad.reduce((s, x) => s + x[1], 0);
+    const x = (a, b) => b ? nf(1).format(a / b) + ' veces' : '—';
+    const cards = [
+      ['Orgullo regional', 'var(--green)', `Las latas de <b>${top3.map((d) => cap(d.n)).join('</b>, <b>')}</b> retienen al <b>${F.pct1(avgR(top3))}</b> de quienes empiezan el video hasta el final, frente a <b>${F.pct1(avgR(low3))}</b> de ${low3.map((d) => cap(d.n)).join(', ')}. Cada lata conecta distinto según su departamento: el orgullo local es el motor creativo de la campaña.`, 'Contenido hiperlocal por departamento (fiestas patronales, comidas y lugares) y pauta segmentada por región con la lata de cada zona.'],
+      ['Narrativa', 'var(--c-yt)', `La historia en tres actos funcionó: la interacción en Meta pasó de <b>${F.pct1(mE('expectativa', 'interacciones'))}</b> en Expectativa a <b>${F.pct1(mE('lanzamiento', 'interacciones'))}</b> con la revelación, y en Colecciona el foco se movió a la acción: los clics subieron de ${F.pct2(mE('expectativa', 'clics'))} a <b>${F.pct2(mE('colecciona', 'clics'))}</b> de las impresiones.`, 'Repetir la estructura expectativa → revelación → mecánica en futuras ediciones, con el pico de inversión en la revelación.'],
+      ['Mecánica', 'var(--red)', `Desde que entró la campaña de tráfico, los clics diarios pasaron de <b>${F.int(pdS)}</b> a <b>${F.int(pdC)}</b> (${x(pdC, pdS)}) y <b>${F.pct(vc / kc)}</b> de los clics terminan en una visita al sitio de registro.`, `Optimizar la carga y el registro del sitio para recuperar el ${F.pct(1 - vc / kc)} que se pierde, y usar a quienes registraron latas como audiencia de remarketing.`],
+      ['Momento de consumo', '#c98a00', `El fin de semana concentra la mejor respuesta en Meta: <b>${F.pct2(fin)}</b> de interacción el sábado y domingo frente a <b>${F.pct2(sem)}</b> de martes a jueves. La marca vive en la celebración.`, 'Subir el peso de inversión de viernes a domingo y conectar las piezas con reuniones familiares, partidos y fiestas.'],
+      ['Display', 'var(--c-gdn)', `Los cinco mejores banners logran un CTR de <b>${F.pct2(ctrTop)}</b>, <b>${x(ctrTop, ctrLow)}</b> el de los cinco más bajos (${F.pct2(ctrLow)}): el diseño marca la diferencia.`, 'Rotar el presupuesto hacia los banners ganadores y replicar su composición en las nuevas piezas.'],
+      ['Audiencia', 'var(--c-meta)', `El público de <b>${edad[0][0]}</b> años es el núcleo (${F.pct(edad[0][1] / edT)} del alcance en Meta), seguido de <b>${edad[1][0]}</b> (${F.pct(edad[1][1] / edT)}). El video de YouTube mantiene un VTR estable entre etapas (${F.pct1(yt('lanzamiento'))} en Lanzamiento y ${F.pct1(yt('colecciona'))} en Colecciona), sin señales de desgaste.`, 'Mantener el video principal como ancla y sumar cortes cortos para el público de 18 a 24 años, que puede crecer.']
+    ];
+    document.getElementById('finds').innerHTML = cards.map(([k, c, t, o]) => `<div class="find" style="--c:${c}"><small>${k}</small>${t}<p class="find-a"><b>Oportunidad:</b> ${o}</p></div>`).join('');
+  }
 
   const ytThumb = (id) => `https://i.ytimg.com/vi/${encodeURIComponent(id)}/hqdefault.jpg`;
   const crePool = (c, e) => { const C = D.creativos, es = e === 'global' ? ['expectativa', 'lanzamiento', 'colecciona'] : [e];
